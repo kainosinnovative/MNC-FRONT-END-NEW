@@ -4,12 +4,14 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { RestApiService } from "../shared/rest-api.service";
+import { config_url } from '../shared/customer/constant';
 @Component({
   selector: 'app-testimonial',
   templateUrl: './testimonial.component.html',
   styleUrls: ['./testimonial.component.scss']
 })
 export class TestimonialComponent implements OnInit {
+  apiurlforhtm = config_url;
   // dataForm: FormGroup | undefined;
   fetchdata: any =[];
   fetchdata1: any;

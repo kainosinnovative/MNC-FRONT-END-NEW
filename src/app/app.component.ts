@@ -15,13 +15,14 @@ import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } fr
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SearchshopPopupComponent } from './searchshop-popup/searchshop-popup.component';
+import { config_url } from './shared/customer/constant';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class Service {
-  apiURL = 'http://localhost/MNC-PHP-API';
+  apiURL = config_url;
   constructor(private http: HttpClient) { }
 
   opts = [];
@@ -45,6 +46,8 @@ export class Service {
 
 
 export class AppComponent implements OnInit{
+
+  apiurlforhtm = config_url;
 
   filteredOptions: Observable<any[]>;
 

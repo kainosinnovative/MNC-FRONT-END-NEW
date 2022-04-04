@@ -25,6 +25,8 @@ var num1 = localStorage.getItem('isLoggedIn');
             num2 = num1;
         }
 
+        
+
 @Component({
 selector: 'app-customer-create',
 templateUrl: './customer-create.component.html',
@@ -33,6 +35,8 @@ providers: [DatePipe]
 })
 
 export class CustomerCreateComponent implements OnInit {
+
+  apiurlforhtm = config_url;
 
   @ViewChild('coverFilesInput') imgType:ElementRef;
 
@@ -392,7 +396,7 @@ uploadFile(profileform:any)
 
       // ... do other stuff here ...
 
-      this.http.get('http://localhost/MNC-PHP-API/app/model?cartype='+this.myusername+
+      this.http.get(config_url+'/app/model?cartype='+this.myusername+
   '&brand='+this.selectedDeviceObj).subscribe(
     data => {
       //alert(data)
@@ -425,7 +429,7 @@ uploadFile(profileform:any)
 
     // ... do other stuff here ...
 
-    this.http.get('http://localhost/MNC-PHP-API/app/model?brand='+this.myuser+
+    this.http.get(config_url+'/app/model?brand='+this.myuser+
 '&cartype='+this.selecttypedata).subscribe(
   data => {
     //alert(data)
@@ -452,6 +456,7 @@ AddCustomerCarDetails(cardetailForm:any)
         console.log("err>>>>>",err);
         if(err.status == 200) {
           this.toastr.success('Car Details added Successfully');
+          window.setTimeout(function(){location.reload()},100);
           this.loadcarDetailsById();
           this.cardetailForm.reset();
           let currentUserId:any = localStorage.getItem('currentUserId');
@@ -496,10 +501,26 @@ AddCustomerCarDetails(cardetailForm:any)
        if(this.removedata.status == "pass"){
         this.toastr.error('Vehicle deleted');
         this.loadcarDetailsById();
+        // window.location.reload(true);
+       this.timedRefresh();
+        // window.setTimeout(function(){location.reload()},2000);
        }
       })
 
     }
+     timedRefresh() {
+      window.setTimeout(function(){location.reload()},100);
+      // setTimeout("location.reload(true);", 300);
+    }
+
+    reloadCurrentRoute() {
+      
+      // let currentUrl = this.router.url;
+      // this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      //   window.setTimeout(function(){location.reload()},2000);
+      //     this.router.navigate([currentUrl]);
+      // });
+  }
 
 
     // loadshopoffers(currentShopId:any){

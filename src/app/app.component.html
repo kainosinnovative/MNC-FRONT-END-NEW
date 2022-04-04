@@ -62,7 +62,7 @@
 
 
   <mat-list-item  *ngIf="userroleSes=='CustomerSes'" > <img src="../assets/images/Kainos_logo.png" style="width: 60px;"> </mat-list-item>
-  <mat-list-item  *ngIf="userroleSes=='shopOwnerSes'"> <img src="http://localhost/MNC-PHP-API/{{shoplogo}}" style="width: 60px;"> </mat-list-item>
+  <mat-list-item  *ngIf="userroleSes=='shopOwnerSes'"> <img src="{{apiurlforhtm}}/{{shoplogo}}" style="width: 60px;"> </mat-list-item>
   <label style="width: 55px;"></label>
   <mat-list-item class="menudesk" *ngIf="currentUsername" > <a  class="colorheaderMenu" >Hi, {{currentUsername}}</a> </mat-list-item> &nbsp; &nbsp;
   <mat-list-item class="menudesk" *ngIf="userroleSes=='shopOwnerSes'"> <a class="colorheaderMenu" mat-list-item routerLink='/ShopDashboard'>Home</a> </mat-list-item> <span *ngIf="userroleSes=='shopOwnerSes'">&nbsp; &nbsp;</span>
@@ -174,7 +174,7 @@
           </div>
             <div class="col-lg-3 col-md-6 footerpopularlink">
               <div class="footer-link footerpopularlink" >
-                  <h2>Popular Links</h2>
+                  <h2>Popular Links </h2>
 <div class="footerpopularlink">
 
 <p class="bloglinkMob">

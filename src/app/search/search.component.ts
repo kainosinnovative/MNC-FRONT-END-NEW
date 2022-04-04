@@ -12,7 +12,7 @@ import { style } from '@angular/animations';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { ToastrService } from 'ngx-toastr';
 
-
+import { config_url } from '../shared/customer/constant';
 
 import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
 // @Injectable({
@@ -20,7 +20,7 @@ import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } fr
 // })
 
 // export class Service {
-//   apiURL = 'http://localhost/MNC-PHP-API';
+//   apiURL = '';
 //   constructor(private http: HttpClient) { }
 
 //   opts = [];
@@ -41,6 +41,7 @@ import { tap, startWith, debounceTime, distinctUntilChanged, switchMap, map } fr
   providers: [DatePipe]
 })
 export class SearchComponent implements OnInit {
+  apiurlforhtm = config_url;
   currenttime:any;
   currentUsername = localStorage.getItem('currentUsername');
   myControl = new FormControl();
@@ -260,7 +261,7 @@ private innerWidth: number;
 
  if(wishlistcolor === "gray"){
 
- this.http.get('http://localhost/MNC-PHP-API/app/Addwhislist?date='+this.date+
+ this.http.get(config_url+'/app/Addwhislist?date='+this.date+
        '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
          (data: any) => {
        console.log(data)
@@ -294,7 +295,7 @@ private innerWidth: number;
 
 else
  {
-     this.http.get('http://localhost/MNC-PHP-API/app/Deletewhislist?date='+this.date+
+     this.http.get(config_url+'/app/Deletewhislist?date='+this.date+
        '&Customer_id='+customerid + '&city_id='+cityid + '&shop_id='+shopid).subscribe(
          (data: any) => {
        //console.log(data)

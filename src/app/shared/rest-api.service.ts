@@ -8,13 +8,13 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
 import { createcustomer } from '../shared/customer/customer';
 import { contactdetails } from '../shared/customer/customer';
-
+import { config_url } from '../shared/customer/constant';
 
 @Injectable({
 providedIn: 'root'
 })
 export class RestApiService {
-apiURL = 'http://localhost/MNC-PHP-API';
+apiURL = config_url;
 constructor(private http:HttpClient) {}
 headers = new HttpHeaders().set('Content-Type', 'application/text');
 // httpOptions = {

@@ -21,6 +21,7 @@ import { MatDialog } from '@angular/material/dialog';
   encapsulation:ViewEncapsulation.None,
 })
 export class ShopProfileComponent implements OnInit {
+  apiurlforhtm = config_url;
   d:any;
 shopprofile : any;
 date: any;
