@@ -215,8 +215,8 @@
           <td>
             <!-- <label class="customerProfileLbl" style="width: 100px;">Amount</label> -->
 
-             <input type="text"   style="padding-left: 0px !important;"  id="newamount" class="  lastname" placeholder="" formControlName="actual_amount" style="width: 60px;">
-            <div *ngIf="shopserviceForm.controls['actual_amount'].touched && shopserviceForm.controls['actual_amount'].invalid ">
+             <input type="number" min="1"   style="padding-left: 0px !important;"  id="newamount" class="lastname" placeholder="" formControlName="actual_amount" style="width: 60px;">
+              <div *ngIf="shopserviceForm.controls['actual_amount'].touched && shopserviceForm.controls['actual_amount'].invalid ">
 
                 <div *ngIf="shopserviceForm.controls['actual_amount'].errors" style="color: red;">
                   <div *ngIf="shopserviceForm.controls['actual_amount'].errors.required" style="font-size: 12px;">

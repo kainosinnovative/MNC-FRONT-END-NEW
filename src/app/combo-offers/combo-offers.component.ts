@@ -103,6 +103,13 @@ this.loadcombooffertblByModelid(1);
     (<HTMLInputElement>document.getElementById("secondtblid")).style.display = "block";
 
     let model_id = (<HTMLInputElement>document.getElementById("model_id")).value;
+    let start_date = (<HTMLInputElement>document.getElementById("combooffer_fromdate")).value;
+    let end_date = (<HTMLInputElement>document.getElementById("combooffer_todate")).value;
+    if(start_date > end_date) {
+      // alert("yes")
+    //  alert(2);
+      (<HTMLInputElement>document.getElementById("enddate_message")).style.display ="block";
+    }
     // alert(model_id  )
     let currentUserId = localStorage.getItem('currentUserId');
     var combooffertbl =
@@ -118,6 +125,9 @@ this.loadcombooffertblByModelid(1);
       this.combooffertblByModelid1 = this.combooffertblByModelid.data.combooffertblByModelid;
       console.log(this.combooffertblByModelid)
     })
+
+
+
 
 
   }
@@ -237,6 +247,8 @@ this.loadcombooffertblByModelid(1);
     (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).value = "";
     (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value = "";
     (<HTMLInputElement>document.getElementById("offerpercentError")).style.display ="none";
+    // (<HTMLInputElement>document.getElementById("offerpercentError1")).style.display ="none";
+    // (<HTMLInputElement>document.getElementById("offerpercentError2")).style.display ="none";
   }
 
   remove(arr:any, item:any)
@@ -256,8 +268,8 @@ this.loadcombooffertblByModelid(1);
 AddComboOffer() {
   (<HTMLInputElement>document.getElementById("offercustomnameError")).style.display="none";
   (<HTMLInputElement>document.getElementById("offernameError")).style.display="none";
-  let start_date = (<HTMLInputElement>document.getElementById("combooffer_fromdate")).value;
-  let end_date = (<HTMLInputElement>document.getElementById("combooffer_todate")).value;
+  // let start_date = (<HTMLInputElement>document.getElementById("combooffer_fromdate")).value;
+  // let end_date = (<HTMLInputElement>document.getElementById("combooffer_todate")).value;
   let combooffer_offerpercent = (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).value;
   let Selectedserviceid = (<HTMLInputElement>document.getElementById("Selectedserviceid")).value;
   let combo_price = (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value;
@@ -279,20 +291,41 @@ AddComboOffer() {
     this.toastr.error("Select atleast two services");
   }
 
-  else if(start_date > end_date) {
-    // alert("yes")
-  //  alert(2);
-    (<HTMLInputElement>document.getElementById("enddate_message")).style.display ="block";
+  // else if(start_date > end_date) {
+  //   // alert("yes")
+  // //  alert(2);
+  //   (<HTMLInputElement>document.getElementById("enddate_message")).style.display ="block";
+  // }
+  else if(combooffer_offerpercent == "") {
+    // alert(3);
+       (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).focus();
+      //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
+      //   let validateamount = "validateamount_"+obj;
+        (<HTMLInputElement>document.getElementById("offerpercentError")).style.display ="block";
+    }
+  else if (Number(combooffer_offerpercent)  >99){
+    // alert(3);
+       (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).focus();
+      //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
+      //   let validateamount = "validateamount_"+obj;
+        (<HTMLInputElement>document.getElementById("offerpercentError1")).style.display ="block";
+    }
+    
+    else if(Number(combooffer_offerpercent) == 0) {
+      // alert(3);
+         (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).focus();
+        //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
+        //   let validateamount = "validateamount_"+obj;
+          (<HTMLInputElement>document.getElementById("offerpercentError2")).style.display ="block";
+      }
+
+else if(Number(combooffer_offerpercent)  >99) {
+  // alert(3);
+     (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).focus();
+    //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
+    //   let validateamount = "validateamount_"+obj;
+      (<HTMLInputElement>document.getElementById("offerpercentError1")).style.display ="block";
   }
-
-
-else if(combooffer_offerpercent == "") {
-// alert(3);
-   (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).focus();
-  //  (<HTMLInputElement>document.getElementById("combooffer_offeramount")).focus();
-  //   let validateamount = "validateamount_"+obj;
-    (<HTMLInputElement>document.getElementById("offerpercentError")).style.display ="block";
-}
 else if (offername=="")
 {
 // alert(4);
@@ -321,8 +354,8 @@ else {
                 "combo_price": combo_price,
                 "shop_id":currentUserId,
                 "offer_percent":combooffer_offerpercent,
-                "start_date":start_date,
-                "end_date":end_date,
+                // "start_date":start_date,
+                // "end_date":end_date,
                 "model_id":model_id,
                 "offer_name":offername,
                 "original_amount":totalamount
@@ -362,6 +395,8 @@ getOfferPrice(offerPercent:any) {
 
 
             (<HTMLInputElement>document.getElementById("offerpercentError")).style.display ="none";
+            (<HTMLInputElement>document.getElementById("offerpercentError1")).style.display ="none";
+            (<HTMLInputElement>document.getElementById("offerpercentError2")).style.display ="none";
 }
 
 

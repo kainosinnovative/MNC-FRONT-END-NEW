@@ -39,6 +39,8 @@ export class ShopServiceComponent implements  OnInit{
    ProfileDataByIdObject:  any;
    ShopProfileDetails: any;
    statuspickupvalue: any;
+   
+  rateControl: FormControl;
   constructor(private http: HttpClient,private router: Router,
     public restApi: RestApiService,private toastr: ToastrService,public datepipe: DatePipe,
     private frmbuilder: FormBuilder) { }
@@ -57,7 +59,11 @@ export class ShopServiceComponent implements  OnInit{
       itemsPerPage: 10,
       currentPage: 1,
       // totalItems: this.collection.count
+
+     
     };
+
+   
 
     this.shopserviceForm = this.frmbuilder.group({
       service_id: ['', Validators.required],
@@ -176,7 +182,12 @@ export class ShopServiceComponent implements  OnInit{
     let model_id = (<HTMLInputElement>document.getElementById("model_"+obj)).value;
     let currentUserId = localStorage.getItem('currentUserId');
 
-    if(service_amount != "") {
+    if (Number(service_amount)  < 0){ 
+      (<HTMLInputElement>document.getElementById(service_amountid)).focus();
+      let validateamount = "validateamount1_"+obj;
+      (<HTMLInputElement>document.getElementById(validateamount)).style.display ="block";
+    }
+     else if(service_amount != "") {
 
 
                   this.http.get('http://localhost/MNC-PHP-API/shop/UpdateshopService?service_amount='+service_amount +
@@ -195,6 +206,7 @@ export class ShopServiceComponent implements  OnInit{
 
                      }))
     }
+    
     else {
       (<HTMLInputElement>document.getElementById(service_amountid)).focus();
       let validateamount = "validateamount_"+obj;
@@ -292,6 +304,7 @@ export class ShopServiceComponent implements  OnInit{
 
       (<HTMLInputElement>document.getElementById(validateoffer1)).style.display ="block";
     }
+    
    
     else {
       (<HTMLInputElement>document.getElementById(offer_percent)).focus();
@@ -335,8 +348,11 @@ export class ShopServiceComponent implements  OnInit{
   removevalidateMsg(id:any) {
     // alert("hi")
     let validateamount = "validateamount_"+id;
+    let invalidamount = "validateamount1_"+id;
+
     // alert(validateamount)
-      (<HTMLInputElement>document.getElementById(validateamount)).style.display ="none";
+    (<HTMLInputElement>document.getElementById(validateamount)).style.display ="none";
+    (<HTMLInputElement>document.getElementById(invalidamount)).style.display ="none";
   }
 
 
@@ -597,3 +613,5 @@ success => {
       
     }
 }
+
+
