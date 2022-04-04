@@ -391,8 +391,15 @@ getOfferPrice(offerPercent:any) {
   var numVal1 = Number((<HTMLInputElement>document.getElementById("totalamount")).value);
             var numVal2 = Number(offerPercentVal) / 100;
             var totalValue = numVal1 - (numVal1 * numVal2);
-            (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value = totalValue.toFixed();
+             if(Number(totalValue)  >0){
 
+              (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value = totalValue.toFixed();
+             }
+
+             else{
+               
+            (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value = '';
+             }
 
             (<HTMLInputElement>document.getElementById("offerpercentError")).style.display ="none";
             (<HTMLInputElement>document.getElementById("offerpercentError1")).style.display ="none";
