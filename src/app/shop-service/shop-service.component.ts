@@ -333,8 +333,14 @@ export class ShopServiceComponent implements  OnInit{
       var offeramtid;
       var originalVal = serviceamount - offeramount;
       offeramtid="offeramount_"+splitted[1]+"_"+splitted[2];
-      console.log(offeramtid);
-     (<HTMLInputElement>document.getElementById(offeramtid)).value =originalVal.toString();
+      if(Number(offeramtid)  >0){
+        (<HTMLInputElement>document.getElementById(offeramtid)).value =originalVal.toString();
+      }
+      else{
+        (<HTMLInputElement>document.getElementById(offeramtid)).value = "";
+      }
+     // console.log(offeramtid);
+  
 
 
   }
