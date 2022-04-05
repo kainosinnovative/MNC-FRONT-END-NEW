@@ -240,7 +240,7 @@ bookingRedirect() {
       if (this.currenttime > this.ShopHolidaysDetails1[i].leave_timing_from	 && this.currenttime < this.ShopHolidaysDetails1[i].leave_timing_to)
 {
       this.closing = true;
-      this.toastr.error('your shop is closed today from ' + this.ShopHolidaysDetails1[i].leave_timing_from + " to " + this.ShopHolidaysDetails1[i].leave_timing_to);
+      this.toastr.error('Closed today from ' + this.ShopHolidaysDetails1[i].leave_timing_from + " to " + this.ShopHolidaysDetails1[i].leave_timing_to);
 }
     }
   }
