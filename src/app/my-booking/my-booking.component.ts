@@ -10,6 +10,7 @@ import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 // import 'rxjs/add/operator/map';
 import { HttpParams,HttpHeaders } from '@angular/common/http';
+import { config_url } from '../shared/customer/constant';
 @Component({
   selector: 'app-my-booking',
   templateUrl: './my-booking.component.html',
@@ -18,11 +19,11 @@ import { HttpParams,HttpHeaders } from '@angular/common/http';
 export class MyBookingComponent implements OnInit {
   MybookingDetails:any;
   title = 'dataTableDemo';
-  apiURL = 'http://localhost/MNC-PHP-API';
+  apiURL = config_url;
 //dtOptions: DataTables.Settings = {};
 dtOptions: any = {};
 posts: any;
- // apiURL = 'http://localhost/MNC-PHP-API';
+ 
   MybookingDetails1:any=[];
   config:any;
   MasterServiceData:any;

@@ -16,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
   providers: [DatePipe]
 })
 export class OnlinebookingComponent implements OnInit {
+  apiurlforhtm = config_url;
   private innerWidth: number;
   private mobileBreakpoint = 480;
   show: boolean = true
@@ -265,7 +266,7 @@ onChangeObj(newObj: any) {
 
   // ... do other stuff here ...
 
-  this.http.get('http://localhost/MNC-PHP-API/app/model?cartype='+this.myusername+ 
+  this.http.get(config_url+'/app/model?cartype='+this.myusername+ 
 '&brand='+this.selectedDeviceObj).subscribe(
 data => {
   //alert(data)
@@ -298,7 +299,7 @@ onchangecartype(typedata: any) {
 
   // ... do other stuff here ...
 
-  this.http.get('http://localhost/MNC-PHP-API/app/model?brand='+this.myuser+ 
+  this.http.get(config_url+'/app/model?brand='+this.myuser+ 
 '&cartype='+this.selecttypedata).subscribe(
 data => {
   //alert(data)

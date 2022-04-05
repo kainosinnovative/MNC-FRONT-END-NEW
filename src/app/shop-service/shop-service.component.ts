@@ -136,7 +136,7 @@ export class ShopServiceComponent implements  OnInit{
 
     //               }
 
-                  this.http.get('http://localhost/MNC-PHP-API/shop/AddshopService?service_amount='+service_amount +
+                  this.http.get(config_url+'/shop/AddshopService?service_amount='+service_amount +
                      "&serviceid=" + obj + "&currentUserId="+currentUserId).subscribe( data => {
                       console.log('POST Request is successful >>>>>>>>', data);
 
@@ -190,7 +190,7 @@ export class ShopServiceComponent implements  OnInit{
      else if(service_amount != "") {
 
 
-                  this.http.get('http://localhost/MNC-PHP-API/shop/UpdateshopService?service_amount='+service_amount +
+                  this.http.get(config_url+'/shop/UpdateshopService?service_amount='+service_amount +
                      "&serviceid=" + obj1 + "&currentUserId="+currentUserId + "&modelId="+model_id) .subscribe((data => {
                      console.log(data);
                      responsedata=data;
@@ -260,7 +260,7 @@ export class ShopServiceComponent implements  OnInit{
 
                   else
                   {
-                  this.http.get('http://localhost/MNC-PHP-API/shop/Updateshopoffer?offer_amount='+offeramount +
+                  this.http.get(config_url+'/shop/Updateshopoffer?offer_amount='+offeramount +
                      "&serviceid=" + obj1 + "&modelId="+model_id +"&offerpercent="+offerpercentage + "&lastupddt="+this.current_date +
                       "&fromdate="+fromdate + "&todate="+todate +"&currentUserId="+currentUserId) .subscribe((data => {
 
@@ -494,7 +494,7 @@ console.log(this.myservice);
 
 // ... do other stuff here ...
 
-this.http.get('http://localhost/MNC-PHP-API/shop/servicebasedonmodel?service_id='+this.myservice+
+this.http.get(config_url+'/shop/servicebasedonmodel?service_id='+this.myservice+
 '&currentUserId='+currentUserId).subscribe(
 data => {
 // //alert(data)
