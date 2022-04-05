@@ -435,6 +435,41 @@ changeBgColor(offer_id:any){
       //  (<HTMLInputElement>document.getElementById("finalamount")).value = this.finalvalue.toFixed();
   }
 }
+
+datapicker(){
+
+  let start_date = (<HTMLInputElement>document.getElementById("pickup_dateid2")).value;
+  let end_date = (<HTMLInputElement>document.getElementById("drop_dateid2")).value;
+
+  (<HTMLInputElement>document.getElementById("dropdate_message")).style.display ="none";
+
+  // (<HTMLInputElement>document.getElementById("enddate_message2")).style.display ="none";
+ 
+
+  if(end_date < start_date) {
+
+    // alert("if");
+   if(end_date !== ""){
+    (<HTMLInputElement>document.getElementById("dropdate_message")).style.display ="block";
+   }
+  }
+ else if(start_date > end_date) {
+  alert("if");
+ if(end_date !== ""){
+
+  (<HTMLInputElement>document.getElementById("dropdate_message")).style.display ="block";
+
+ }
+}
+
+ else {
+    // alert("else");
+    (<HTMLInputElement>document.getElementById("dropdate_message")).style.display ="none";
+
+    // (<HTMLInputElement>document.getElementById("enddate_message2")).style.display ="none";
+  }
+
+}
 ExtraServiceArr = new Array();
 ExtraServiceArr1 = new Array();
 selectbuttoncolor(service_id:any,indexval:any){
