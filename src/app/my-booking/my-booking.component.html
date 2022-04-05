@@ -36,7 +36,7 @@
             <tbody  style="background-color: #ededed8c;" >
               <tr  *ngFor="let b of  posts| paginate: config ;  let i=index;" style="border:1px solid #aeaeae; background-color: #ededed8c;">
                 <td style="display:none;width: 0px;">{{b.id}}</td>
-               <td><a style="cursor: pointer;color: #26a0fc; text-decoration:underline;"  (click)="ViewDetailsPopup(b.Booking_id,'My Booking')" >{{b.Booking_id}}</a></td>
+               <td><a style="cursor: pointer;color: #000000; text-decoration:underline;font-weight: 500;"  (click)="ViewDetailsPopup(b.Booking_id,'My Booking')" >{{b.Booking_id}}</a></td>
                <!-- <td><a style="cursor: pointer;color: #26a0fc;">{{b.Booking_id}}</a></td> -->
                 <td>{{b.vehicle_number}} - 
                   <span *ngFor="let m1 of  MasterModelData1;" >
