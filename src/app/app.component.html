@@ -19,7 +19,7 @@
 
    <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" (click)="searchshopMobile()" mat-list-item ><i class="fa fa-search" aria-hidden="true"></i>&nbsp; Search</a> </mat-list-item>
 
-    <mat-list-item class="menudesk1 " *ngIf="!currentUsername"> <a class="txtunderline_remove2 cursorcls"  mat-list-item (click)="login()">
+    <mat-list-item class="menudesk1 " *ngIf="!currentUsername"> <a class="txtunderline_remove2 cursorcls"  mat-list-item (click)="login();loginCheck1()">
       Login</a></mat-list-item>
 
       <!-- customer mobile end -->
