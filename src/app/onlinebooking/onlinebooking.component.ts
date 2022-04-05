@@ -64,6 +64,9 @@ date2:any;
  ShopProfileDetailsName:any;
  ProfileDataByIdObject:any;
  ShopProfileDetails:any;
+ pickup_dateid: any;
+ drop_dateid: any;
+
  public text: string = 'Select';
 
  public textcontent: string = 'Select';
@@ -209,6 +212,58 @@ date2:any;
     console.log("hiiiii1111");
 }
 
+dropdatapicker(){
+
+    let start_date = (<HTMLInputElement>document.getElementById("pickup_dateid")).value;
+    let end_date = (<HTMLInputElement>document.getElementById("drop_dateid")).value;
+
+    (<HTMLInputElement>document.getElementById("enddate_message1")).style.display ="none";
+
+    // (<HTMLInputElement>document.getElementById("enddate_message2")).style.display ="none";
+   
+
+    if(end_date < start_date) {
+
+      // alert("if");
+     if(end_date !== ""){
+      (<HTMLInputElement>document.getElementById("enddate_message1")).style.display ="block";
+     }
+    }
+   else if(start_date > end_date) {
+    // alert("if");
+   if(end_date !== ""){
+
+    (<HTMLInputElement>document.getElementById("enddate_message1")).style.display ="block";
+
+   }
+  }
+
+   else {
+      // alert("else");
+      (<HTMLInputElement>document.getElementById("enddate_message1")).style.display ="none";
+
+      // (<HTMLInputElement>document.getElementById("enddate_message2")).style.display ="none";
+    }
+}
+
+// pickupdatapicker(){
+
+//   let start_date = (<HTMLInputElement>document.getElementById("pickup_dateid")).value;
+//     let end_date = (<HTMLInputElement>document.getElementById("drop_dateid")).value;
+
+//     (<HTMLInputElement>document.getElementById("enddate_message2")).style.display ="none";
+
+//     if(end_date < start_date) {
+//       // alert("if");
+     
+//       (<HTMLInputElement>document.getElementById("enddate_message2")).style.display ="block";
+//     }
+//     else{
+
+//        (<HTMLInputElement>document.getElementById("enddate_message2")).style.display ="none";
+//     }
+// }
+
 getPickupAvl(currentShopId:any) {
   
   // let currentShopId = localStorage.getItem('currentUserId');
@@ -218,6 +273,8 @@ getPickupAvl(currentShopId:any) {
     
     this.getPickupAvlData1 = this.getPickupAvlData.data.profile;
     this.getPickupAvlData2 = this.getPickupAvlData1.is_pickup_drop_avl;
+    
+    
     console.log("getPickupAvl>>>",this.getPickupAvlData1.is_pickup_drop_avl)
     
   }
@@ -703,7 +760,15 @@ slideConfig1 = {"slidesToShow": 1, "slidesToScroll": 1};
     this.onlinebooking.controls.drop_date.setValue("");
     this.onlinebooking.controls.drop_time.setValue("");
 
-    if(pickup_drop == false) {
+    let start_date = (<HTMLInputElement>document.getElementById("pickupdateTdid")).value;
+    let end_date = (<HTMLInputElement>document.getElementById("droptimetdid")).value;
+    if(start_date > end_date) {
+      // alert("yes")
+    //  alert(2);
+      (<HTMLInputElement>document.getElementById("enddate_message1")).style.display ="block";
+    }
+
+  else if(pickup_drop == false) {
       (<HTMLInputElement>document.getElementById("pickupupDropInstructionId")).style.display = "block";
       (<HTMLInputElement>document.getElementById("pickupdateTdid")).style.display = "block";  
       (<HTMLInputElement>document.getElementById("pickuptimetdid")).style.display = "block";

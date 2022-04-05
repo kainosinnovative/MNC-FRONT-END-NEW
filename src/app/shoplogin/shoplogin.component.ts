@@ -14,7 +14,7 @@ import { config_url } from '../shared/customer/constant';
   styleUrls: ['./shoplogin.component.scss']
 })
 export class ShoploginComponent implements OnInit {
-
+  apiurlforhtm = config_url;
   public  shopform: FormGroup;
  
   

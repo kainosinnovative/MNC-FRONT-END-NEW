@@ -103,7 +103,8 @@
                   <label >Pick-up Date <span class="requiredfield">  *</span></label> 
       <br>
                        
-      <input class="datecls" min="{{current_date}}" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="pickup_date" id="pickup_dateid" placeholder="Date From" >
+      <input class="datecls" min="{{current_date}}"  type="date" (change)="dropdatapicker()" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="pickup_date" id="pickup_dateid" placeholder="Date From" >
+      <!-- <br>  <span id="enddate_message2" style="color: red;display: none;">Pickup date Invalid</span> -->
   </div>
                 </td>
   
@@ -160,9 +161,10 @@
                 <td style="width: 121px;" class="dropdateMob">
                   <div id="dropdatetdid" *ngIf="getPickupAvlData2 == 1" style="display: none;width: 110px;">
                   <label >Drop Date</label> 
-      <br>
-                       
-      <input class="datecls" min="{{current_date}}" type="date" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="drop_date" placeholder="Date From" >
+                        
+      <input class="datecls" min="{{current_date}}" type="date" style="border: 1px solid;height: 34px;width: 110px;" (change)="dropdatapicker()" id="drop_dateid" matinput="" formControlName="drop_date" placeholder="Date From" >
+      <br>  <span id="enddate_message1" style="color: red;display: none;">To date Invalid</span>
+       
                 </div>
                 </td>
                 <td style="width: 48px;">
@@ -282,7 +284,12 @@
                    </td>
 
                    <td>
-                    <i id="checkmarkicon_{{s.offer_id}}" style="font-size: 40px;color: #ff2007;display: none;" class="fa fa-check-circle"></i>
+                    <div id="checkmarkicon_{{s.offer_id}}" style="display: none;" class="wrapper"> <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                      <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                      <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                  </svg>
+              </div>
+                    <!-- <i id="checkmarkicon_{{s.offer_id}}" style="font-size: 40px;color: #ff2007;display: none;" class="fa fa-check-circle"></i> -->
 
                    </td>
                  </tr>

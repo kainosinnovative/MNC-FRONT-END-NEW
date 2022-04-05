@@ -15,7 +15,7 @@
                   <th  style="display:none;width: 0px;">b</th>
                 <th style="width:13%;font-weight:normal;">Booking Id</th>
                 <th style="width: 17%;font-weight:normal;">Registration No</th>
-                <th style="width:11%;font-weight:normal;">Date</th>
+                <th style="width:11%;padding: left 9px;font-weight:normal;">Booking Date</th>
                 <th style="width:13%;font-weight:normal;">Shop</th>
                 <th style="width:23%;font-weight:normal;">Booked Status</th>
                 <th style="width:12%;font-weight:normal;">Service Status</th>
@@ -36,7 +36,7 @@
             <tbody  style="background-color: #ededed8c;" >
               <tr  *ngFor="let b of  posts| paginate: config ;  let i=index;" style="border:1px solid #aeaeae; background-color: #ededed8c;">
                 <td style="display:none;width: 0px;">{{b.id}}</td>
-               <td><a style="cursor: pointer;color: #26a0fc; text-decoration:underline;"  (click)="ViewDetailsPopup(b.Booking_id,'My Booking')" >{{b.Booking_id}}</a></td>
+               <td><a style="cursor: pointer;color: #000000; text-decoration:underline;font-weight: 500;"  (click)="ViewDetailsPopup(b.Booking_id,'My Booking')" >{{b.Booking_id}}</a></td>
                <!-- <td><a style="cursor: pointer;color: #26a0fc;">{{b.Booking_id}}</a></td> -->
                 <td>{{b.vehicle_number}} - 
                   <span *ngFor="let m1 of  MasterModelData1;" >

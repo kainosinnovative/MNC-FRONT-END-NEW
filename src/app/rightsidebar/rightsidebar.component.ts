@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { TestimonialAddComponent } from '../testimonial-add/testimonial-add.component';
 import { RestApiService } from "../shared/rest-api.service";
 import { EventEmitterService } from '../event-emitter.service';
+import { config_url } from '../shared/customer/constant';
+
 @Component({
   selector: 'app-rightsidebar',
   templateUrl: './rightsidebar.component.html',
@@ -12,7 +14,7 @@ import { EventEmitterService } from '../event-emitter.service';
 })
 export class RightsidebarComponent implements OnInit {
   
-
+  apiurlforhtm = config_url;
   currentUsername = localStorage.getItem('currentUsername');
 
   userroleSes = localStorage.getItem('userroleSes');
