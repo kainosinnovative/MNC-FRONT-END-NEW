@@ -22,7 +22,7 @@
 <!-- <p>{{i}}</p> -->
         <div class="avatar mx-auto">
           <div *ngIf="test.profile_img"><img style="width: 100px;height: 100px;padding:5px;" src="{{apiurlforhtm}}/{{test.profile_img}}" class="rounded-circle"></div>
-          <div *ngIf="!test.profile_img"> <img style="width: 100px;height: 100px;padding:5px;" src="../assets/images/avatar.png" class="rounded-circle"></div>
+          <div *ngIf="!test.profile_img"> <img style="width: 100px;height: 100px;padding:5px;" src="{{apiurlforhtm}}/images/avatar.png" class="rounded-circle"></div>
         </div>
         <!--Content-->
         <h4 class="font-weight-bold dark-grey-text mt-4 subheading">{{test.firstname}}</h4>

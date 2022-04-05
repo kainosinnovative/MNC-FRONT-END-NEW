@@ -13,8 +13,8 @@
                 <div class="col-sm-3" style="margin-bottom: 18px;">          
                   
                 
-                    <img *ngIf="ShopProfileDetails.shop_logo" style="width: 100px;height: 100px;"  src="{{apiurlforhtm}}/MNC-PHP-API/{{ShopProfileDetails.shop_logo}}" class="rounded-circle">
-                    <img *ngIf="!ShopProfileDetails.shop_logo" style="width: 180px;height: 100px;"  src="../assets/images/avatar.png" class="rounded-circle">
+                    <img *ngIf="ShopProfileDetails.shop_logo" style="width: 100px;height: 100px;"  src="{{apiurlforhtm}}/{{ShopProfileDetails.shop_logo}}" class="rounded-circle">
+                    <img *ngIf="!ShopProfileDetails.shop_logo" style="width: 180px;height: 100px;"  src="{{apiurlforhtm}}/images/avatar.png" class="rounded-circle">
                        
                     <div class="form-group form-inline">
                     <label >Shop Logo</label>
@@ -193,7 +193,7 @@
               
             
                 <img *ngIf="ShopProfileDetails.shop_image" style="width: 100px;height: 100px;"  src="{{apiurlforhtm}}/{{ShopProfileDetails.shop_image}}" class="rounded-circle">
-                <img *ngIf="!ShopProfileDetails.shop_image" style="width: 180px;height: 100px;"  src="../assets/images/avatar.png" class="rounded-circle">
+                <img *ngIf="!ShopProfileDetails.shop_image" style="width: 180px;height: 100px;"  src="{{apiurlforhtm}}/images/avatar.png" class="rounded-circle">
                    
                 <div class="form-group form-inline">
                 <label >Profile Photo</label>
