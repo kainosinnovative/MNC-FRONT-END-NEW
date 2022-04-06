@@ -3,12 +3,10 @@
   //   margin-top: -250px;
   // }
 
-  
-  //   .onchangecontent {
-  //     /* margin-bottom: -206px; */
-  //     top: 330px;
-  //     position: absolute;
-  // }
+  .combooffheading{
+    margin-left: 15px;
+  }
+   
 
   // .onchangetable {
   //   position: absolute;
@@ -93,7 +91,7 @@
   margin-left: 15px;
 }
 .model{
-  margin-left: 24px;
+  margin-left: 21px;
 }
 
 .row>* {
@@ -128,6 +126,16 @@
 }
 
 @media screen and (min-width: 768px) {
+  .combooffheading{
+    margin-left: 48px;
+  }
+  .onchangecontent {
+    margin-left: 9px;
+    
+}
+  .addbtncls{
+    margin-right: 15px;
+  }
   
   .fromdatecls{
     margin-left: -7px;
@@ -174,7 +182,7 @@
   box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
  // margin: 12px;
  // margin-left:80px;
-  width:100%;
+  width:98%;
 
 
  padding:10px;

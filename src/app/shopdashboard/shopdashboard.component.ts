@@ -667,7 +667,7 @@ currentComboOffers(){
 
         type: "bar",
         height: 300,
-        width:300,
+        width:400,
         colors: "red",
 
       },
@@ -761,24 +761,26 @@ loadServiceDataOffers(){
       series: this.NormalOfferPercentArr,
       chart: {
         width: 500,
-        type: "donut"
+        type: "donut",
+        options: {
+          legend: {
+            show:false,
+            position: 'bottom',
+            
+          }
+        },
       },
+     
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       fill: {
-        type: "gradient"
+        type: "gradient",
       },
       labels: this.servicenameArr,
 
-      legend: {
-        position: "left"
-        // enabled:true,
-        // formatter:  this.servicenameArr
-        // formatter: function(val:any, opts:any) {
-        //   return val + " - " + opts.w.globals.series[opts.seriesIndex];
-        // }
-      },
+      
+      
       responsive: [
         {
           breakpoint: 480,
