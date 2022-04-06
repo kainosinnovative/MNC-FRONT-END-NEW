@@ -316,7 +316,7 @@ export class ShopServiceComponent implements  OnInit{
   }
   getOfferPrice(term: string,termid: string): void
   {
-      //alert(term);
+      // alert(term);
       //alert(termid);
       var termid1=termid;
       var splitted = termid1.split("_", 3);
@@ -332,19 +332,16 @@ export class ShopServiceComponent implements  OnInit{
       //alert(offeramount);
       var offeramtid;
       var originalVal = serviceamount - offeramount;
-      alert(originalVal);
+      // alert(originalVal);
       offeramtid="offeramount_"+splitted[1]+"_"+splitted[2];
-
-      if(offeramtid  >0){
+//alert(offeramtid);
+      if(Number(term)  >0 && Number(term) <= 99){
         (<HTMLInputElement>document.getElementById(offeramtid)).value =originalVal.toString();
       }
       else{
         (<HTMLInputElement>document.getElementById(offeramtid)).value = "";
       }
      // console.log(offeramtid);
-
-
-
   }
   // validatedate(datestring :string)
   // {

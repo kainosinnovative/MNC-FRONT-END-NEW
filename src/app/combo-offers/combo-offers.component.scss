@@ -1,10 +1,34 @@
 @media screen and (max-width: 768px) {
+  // .onchangetable{
+  //   margin-top: -250px;
+  // }
+
+  
+  //   .onchangecontent {
+  //     /* margin-bottom: -206px; */
+  //     top: 330px;
+  //     position: absolute;
+  // }
+
+  // .onchangetable {
+  //   position: absolute;
+  //   top: 249px;
+  // }
+  
+ 
   .amt1{
     margin-left: 14px;
   }
   .addofferbtncls{
     text-align: left !important;
     margin-left: 3px;
+    
+      // position: absolute;
+      // top: 472px;
+  
+  }
+  .addofferbtncls2{
+    text-align: left !important;
   }
 .offercustcls{
   // margin-left: 23px;
@@ -82,7 +106,7 @@
   margin-bottom: 13px;
 }
 
-.accordion{
+.accordioncombooffers{
   box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
   margin: 12px;
  // margin-left:80px;
@@ -104,18 +128,23 @@
 }
 
 @media screen and (min-width: 768px) {
+  
+  .fromdatecls{
+    margin-left: -7px;
+  }
+ 
   .secondcolumn{
     width: 670px;
     margin-left: 2px;
    // margin-left: 66px;
   }
   .offamtdiv{
-    margin-left: -36px;
+    margin-left: -21px;
   }
   .offeramt{
     // margin-left: 10px;
      width: 127px !important;
-     margin-left: 8px;
+    //  margin-left: 8px;
    }
   .offerpreg2{
     // margin-left: 25px;
@@ -127,7 +156,7 @@
     // margin-left: 25px;
   }
   .addofferbtncls{
-    margin-right: -11px;
+    // margin-left: 22px;
   }
   .offerpreg{
     width:25% !important;
@@ -140,7 +169,7 @@
   }
 }
 
-.accordion{
+.accordioncombooffers{
   align-items: center;
   box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
  // margin: 12px;
