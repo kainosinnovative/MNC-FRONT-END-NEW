@@ -96,12 +96,15 @@ this.loadcombooffertblByModelid(1);
     // alert("hi");
     (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).value = "";
     (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value = "";
+    if((<HTMLInputElement>document.getElementById("totalamount")) != null) {
     (<HTMLInputElement>document.getElementById("totalamount")).value = "";
+    }
     (<HTMLInputElement>document.getElementById("addCombobtn")).disabled=true;
     (<HTMLInputElement>document.getElementById("addCombobtn")).style.opacity=".65";
-    if(a == 2)
+    if(a == 2){
     (<HTMLInputElement>document.getElementById("secondtblid")).style.display = "block";
-
+    (<HTMLInputElement>document.getElementById("secondtblid2")).style.display = "block";
+    }
     let model_id = (<HTMLInputElement>document.getElementById("model_id")).value;
     let start_date = (<HTMLInputElement>document.getElementById("combooffer_fromdate")).value;
     let end_date = (<HTMLInputElement>document.getElementById("combooffer_todate")).value;
