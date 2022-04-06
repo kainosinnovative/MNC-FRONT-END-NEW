@@ -8,6 +8,7 @@ import { Router,ActivatedRoute,ParamMap, Params, NavigationEnd  } from '@angular
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { config_url } from '../shared/customer/constant';
 import { ToastrService } from 'ngx-toastr';
+import { pick } from 'highcharts';
 
 @Component({
   selector: 'app-onlinebooking',
@@ -88,18 +89,20 @@ date2:any;
 
 
   ngOnInit(): void {
+
+  // (<HTMLInputElement>document.getElementById("pickup_time")).disabled =true;
     this.date2=new Date();
     this.date2 =this.datepipe.transform(this.date2, 'yyyy-MM-dd');
 
     this.adjustsItemsPerSlide();
     // (<HTMLInputElement>document.getElementById("movetopid")).scrollTop=0;
     (<HTMLInputElement>document.getElementById("booking_date")).focus();
- 
+
     this.date=new Date();
      this.current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
      let currentUserId = localStorage.getItem('currentUserId');
      let userroleSes = localStorage.getItem('userroleSes');
-     
+
 
     this.displaycartype();
     this.loadcarbrand();
@@ -107,9 +110,9 @@ date2:any;
     // this.loadshopdetails();
     this.loadcarDetailsById();
     this.idbyMasterService();
-  
-    
-   
+
+
+
     const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
     const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
     const zerocheck = '^0{1}$';
@@ -134,7 +137,7 @@ date2:any;
       drop_time: [],
       payment_type:[],
       last_upd_by: [userroleSes, [Validators.required]],
-       }) 
+       })
 
 
        this.router.params.subscribe(params => {
@@ -153,10 +156,21 @@ date2:any;
         this.onlinebooking.controls.payment_type.setValue("Cash On Delivery");
         this.getshopProfileDataByIdBooking(id);
         this.onlinebooking.controls.bookingdate.setValue(this.current_date);
-        
-        
+
+
   })
-  
+  let pickup_drop = this.onlinebooking.get('pickup_drop').value;
+
+  if(pickup_drop==false)
+  {
+  // alert(pickup_drop);
+   this.onlinebooking.get('pickup_date').disable();
+   this.onlinebooking.get('pickup_time').disable();
+   this.onlinebooking.get('drop_date').disable();
+   this.onlinebooking.get('drop_time').disable();
+   this.onlinebooking.get('instructions').disable();
+
+  }
   }
 
   loadcarDetByModelId(model_id:any){
@@ -166,8 +180,8 @@ date2:any;
                   "model": model_id,
                   "currentUserId": currentUserId,
                    }
-    
-    
+
+
     return this.restApi.carDetByModelId(carDetByModelId).subscribe((data: {}) => {
       // alert(data)
       this.carDetailsById2 = data;
@@ -177,25 +191,25 @@ date2:any;
   }
 
   getshopProfileDataByIdBooking(id:any) {
-  
+
     // let currentShopId = localStorage.getItem('currentUserId');
     return this.restApi.readShopProfileDataById(id).subscribe((res)=>{
       this.ProfileDataByIdObject = res
-  
-      
+
+
       this.ShopProfileDetails = this.ProfileDataByIdObject.data.profile
       this.ShopProfileDetailsLogo = this.ShopProfileDetails.shop_logo;
       this.ShopProfileDetailsName = this.ShopProfileDetails.name;
       //console.log("this.ShopProfileDetails>>>",this.ShopProfileDetails.shop_logo)
-      
+
     }
-      
-    
+
+
     )
-    
+
   }
 
-  
+
   private adjustsItemsPerSlide() {
     this.innerWidth = window.innerWidth;
     if (this.innerWidth < this.mobileBreakpoint) {
@@ -220,7 +234,7 @@ dropdatapicker(){
     (<HTMLInputElement>document.getElementById("enddate_message1")).style.display ="none";
 
     // (<HTMLInputElement>document.getElementById("enddate_message2")).style.display ="none";
-   
+
 
     if(end_date < start_date) {
 
@@ -255,7 +269,7 @@ dropdatapicker(){
 
 //     if(end_date < start_date) {
 //       // alert("if");
-     
+
 //       (<HTMLInputElement>document.getElementById("enddate_message2")).style.display ="block";
 //     }
 //     else{
@@ -265,53 +279,53 @@ dropdatapicker(){
 // }
 
 getPickupAvl(currentShopId:any) {
-  
+
   // let currentShopId = localStorage.getItem('currentUserId');
   return this.restApi.readShopProfileDataById(currentShopId).subscribe((res)=>{
     this.getPickupAvlData = res
 
-    
+
     this.getPickupAvlData1 = this.getPickupAvlData.data.profile;
     this.getPickupAvlData2 = this.getPickupAvlData1.is_pickup_drop_avl;
-    
-    
+
+
     console.log("getPickupAvl>>>",this.getPickupAvlData1.is_pickup_drop_avl)
-    
+
   }
-    
-  
+
+
   )
-  
+
 }
 
 displaycartype(){
-    
-    
+
+
   return this.restApi.getcartype().subscribe((cartypedata: {}) => {
     // alert(data)
     this.displaydata = cartypedata;
     this.displaydata1 = this.displaydata.data.type;
-    
+
     console.log("data>>>>",this.displaydata1)
   })
 }
 
 loadcarbrand(){
-    
-    
+
+
   return this.restApi.getcarbrand().subscribe((carbranddata: {}) => {
     // console.log(carbranddata);
      //console.log(hi)
     this.brandtype = carbranddata;
     this.branddata = this.brandtype.data.type;
-    
+
     console.log("data>>>>",this.branddata)
   })
 }
 
 onChangeObj(newObj: any) {
   console.log(newObj);
-  
+
 
   this.selectedDeviceObj = newObj;
 
@@ -323,7 +337,7 @@ onChangeObj(newObj: any) {
 
   // ... do other stuff here ...
 
-  this.http.get(config_url+'/app/model?cartype='+this.myusername+ 
+  this.http.get(config_url+'/app/model?cartype='+this.myusername+
 '&brand='+this.selectedDeviceObj).subscribe(
 data => {
   //alert(data)
@@ -344,7 +358,7 @@ error => {
 
 onchangecartype(typedata: any) {
   console.log(typedata);
-  
+
 
   this.selecttypedata = typedata;
 
@@ -356,7 +370,7 @@ onchangecartype(typedata: any) {
 
   // ... do other stuff here ...
 
-  this.http.get(config_url+'/app/model?brand='+this.myuser+ 
+  this.http.get(config_url+'/app/model?brand='+this.myuser+
 '&cartype='+this.selecttypedata).subscribe(
 data => {
   //alert(data)
@@ -367,27 +381,27 @@ data => {
 error => {
   // alert(error)
   console.log(error.status)
- 
+
 }
 );
 }
 
 readCustomerDataById() {
-  
+
   let currentUserId = localStorage.getItem('currentUserId');
 
   return this.restApi.readCustomerDataById(currentUserId).subscribe((res)=>{
     this.CustomerDataById = res
 
-    
+
     this.CustomerDataById1 = this.CustomerDataById.data.profile
     console.log(this.CustomerDataById);
-    
+
   }
-    
-  
+
+
   )
-  
+
 }
 
 loadshopdetails(shopid:any,model_id:any){
@@ -398,15 +412,15 @@ loadshopdetails(shopid:any,model_id:any){
                   "model": model_id,
                   "shopid": shopid,
                    }
-  
+
   return this.restApi.getServiceDataOnlineBookingModel(ServiceDataOnlineBookingModel).subscribe((data: {}) => {
     // alert(data)
     this.shopdetails = data;
     //console.log("abi", this.shopdetails);
      this.shopdetails1 = this.shopdetails.data.getServiceDataOnlineBookingModel;
-    
+
      console.log("shopdetails1 final>>>>",this.shopdetails1)
-    
+
   })
 }
 
@@ -417,37 +431,37 @@ loadshopoffers(shopid:any,modelid:any){
                   "model": modelid,
                   "shopid": shopid,
                    }
-  
+
   return this.restApi.ShopoffersById(onlinebookingcombo).subscribe((data: {}) => {
 
     //console.log('testabi', data);
-   
+
     this.offerdetails = data;
     this.offerslist = this.offerdetails.data.OnlineBookingShopDetails;
     console.log("shop_logo>>>>",this.offerslist)
-    
+
   })
 
 }
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
-  
+
   slickInit(e:any) {
     console.log('slick initialized');
   }
-    
+
   breakpoint(e:any) {
     console.log('breakpoint');
   }
-    
+
   afterChange(e:any) {
     console.log('afterChange');
   }
-    
+
   beforeChange(e:any) {
     console.log('beforeChange');
   }
 
-  
+
 
 changeBgColor(offer_id:any){
 
@@ -458,9 +472,9 @@ changeBgColor(offer_id:any){
 // alert(buttonid)
     let buttontext =  (<HTMLInputElement>document.getElementById(buttonid)).innerHTML;
 
-      if(buttontext === 'Select') { 
+      if(buttontext === 'Select') {
         // alert(this.counter);
-        
+
         if(this.counter < 1) {
           this.counter = this.counter + 1;
 
@@ -493,16 +507,16 @@ ExtraServiceArr1 = new Array();
 selectbuttoncolor(service_id:any,indexval:any){
 
  //alert(service_id);
-   
+
   let service_totalid = "amount_" + service_id;
-  
+
 
  let  currentserviceid ="chooice_"+ service_id;
   let selecttext =  (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML;
 
  // alert(selecttext);
 
-      if(selecttext === 'Select') { 
+      if(selecttext === 'Select') {
         (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "Selected";
        (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "rgb(24 114 242)";
        var service_amt = Number((<HTMLInputElement>document.getElementById(service_totalid)).value);
@@ -513,9 +527,9 @@ selectbuttoncolor(service_id:any,indexval:any){
       this.onlinebooking.controls.serviceprice_total.setValue(this.totalvalue.toFixed());
 
        } else {
-   
+
      (<HTMLInputElement>document.getElementById(currentserviceid)).innerHTML = "Select";
-     (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "#0C5578"; 
+     (<HTMLInputElement>document.getElementById(currentserviceid)).style.backgroundColor = "#0C5578";
      var service_amt = Number((<HTMLInputElement>document.getElementById(service_totalid)).value);
      this.totalvalue = this.totalvalue -(service_amt);
     //  (<HTMLInputElement>document.getElementById("totalamount")).value =  this.totalvalue.toFixed();
@@ -532,16 +546,16 @@ else {
 }
 
  var arrayLength1 = this.ExtraServiceArr.length;
- 
+
  this.ExtraServiceArr1 = new Array();
  for (var i = 0; i < arrayLength1; i++) {
    var splitArr = this.ExtraServiceArr[i].split("#");
-   
+
 
    //Do something
    this.ExtraServiceArr1.push(splitArr[0]);
   //  this.ComboPrimaryIdArr.push(splitArr[0]);
-   
+
 }
 this.onlinebooking.controls.services.setValue(this.ExtraServiceArr1.toString());
 
@@ -552,22 +566,22 @@ let extraserviceTotalAmount = Number(this.onlinebooking.get('serviceprice_total'
     let FinAmount = extraserviceTotalAmount + comboserviceTotalAmount;
     // (<HTMLInputElement>document.getElementById("final_totalamount")).value = FinAmount.toString();
     this.onlinebooking.controls.payable_amt.setValue(FinAmount.toString());
-    
+
 }
 
 idbyMasterService(){
-    
+
   return this.restApi.getMasterService().subscribe((data: {}) => {
     // alert(data)
     this.MasterServiceid = data;
     this.MasterServiceid1 = this.MasterServiceid.data.type;
-    
+
     console.log("aravind>>>>",this.MasterServiceid1)
     // this.dtTrigger.next();
 
   })
 
-  
+
 }
 ComboServiceArr = new Array();
 ComboServiceArr1 = new Array();
@@ -599,23 +613,23 @@ getComboOfferDetails(Comboserviceid:any,Comboservice_amount:any,Comboservice_Off
     this.ComboPrimaryIdArr = new Array();
     for (var i = 0; i < arrayLength; i++) {
       var splitArr = this.ComboServiceArr[i].split("#");
-      
+
 
       //Do something
       this.ComboServiceArr1.push(splitArr[1]);
       this.ComboPrimaryIdArr.push(splitArr[0]);
-      
+
   }
 
 this.onlinebooking.controls.combo_id.setValue(this.ComboPrimaryIdArr.toString());
     // (<HTMLInputElement>document.getElementById("offernameShow")).innerText = this.ComboServiceArr1.toString();
-    
-    
+
+
     let extraserviceTotalAmount = Number(this.onlinebooking.get('serviceprice_total').value);
     let comboserviceTotalAmount = Number(this.onlinebooking.get('comboprice_total').value);
     let FinAmount = extraserviceTotalAmount + comboserviceTotalAmount;
     this.onlinebooking.controls.payable_amt.setValue(FinAmount.toString());
-   
+
 }
 
 
@@ -623,10 +637,10 @@ remove(arr:any, item:any)
 {
     var index = this.ComboServiceArr.indexOf(item);
     return [
- 
+
         // part of the array before the given item
         ...this.ComboServiceArr.slice(0, index),
- 
+
         // part of the array after the given item
         ...this.ComboServiceArr.slice(index + 1)
     ];
@@ -637,10 +651,10 @@ remove1(arr:any, item:any)
 {
     var index = this.ExtraServiceArr.indexOf(item);
     return [
- 
+
         // part of the array before the given item
         ...this.ExtraServiceArr.slice(0, index),
- 
+
         // part of the array after the given item
         ...this.ExtraServiceArr.slice(index + 1)
     ];
@@ -651,26 +665,26 @@ remove1(arr:any, item:any)
 
 
 slideConfig1 = {"slidesToShow": 1, "slidesToScroll": 1};
-  
+
   slickInit1(e:any) {
     console.log('slick initialized');
   }
-    
+
   breakpoint1(e:any) {
     console.log('breakpoint');
   }
-    
+
   afterChange1(e:any) {
     console.log('afterChange');
   }
-    
+
   beforeChange1(e:any) {
     console.log('beforeChange');
   }
 
 
   loadcarDetailsById(){
-    
+
     let currentUserId = localStorage.getItem('currentUserId');
     return this.restApi.CarDetailsById(currentUserId).subscribe((data: {}) => {
       // alert(data)
@@ -684,7 +698,7 @@ slideConfig1 = {"slidesToShow": 1, "slidesToScroll": 1};
   OnlineBooking(onlinebooking:any) {
 
     let payable_amt = this.onlinebooking.get('payable_amt').value;
-    
+
     let pickup_drop = this.onlinebooking.get('pickup_drop').value;
 
     let pickup_date = this.onlinebooking.get('pickup_date').value;
@@ -695,16 +709,16 @@ slideConfig1 = {"slidesToShow": 1, "slidesToScroll": 1};
 
     // }
     if(pickup_drop == true && instructions == '') {
-      
+
       (<HTMLInputElement>document.getElementById("instructions")).focus();
     this.toastr.error('Enter Pickup & Drop Instructions');
-    
+
   }
     else if(pickup_drop == true && pickup_date == '') {
-      
+
         (<HTMLInputElement>document.getElementById("pickup_dateid")).focus();
       this.toastr.error('Select pickup date');
-      
+
     }
     else if(payable_amt == "" || payable_amt == 0){
       this.toastr.error('Please select any service for your car');
@@ -720,21 +734,21 @@ slideConfig1 = {"slidesToShow": 1, "slidesToScroll": 1};
           this.toastr.success('Booking request submitted');
           this.router1.navigate(['/MyBooking']);
           window.setTimeout(function(){location.reload()},100)
-          
+
         }
     });
   }
 // this.restApi.OnlineBookingInsertFn(onlinebooking).subscribe((data: {}) => {
-  
+
 //   this.OnlineBookingInsert = data;
-  
+
 // })
   }
 
 
   vehicleBasedModel(newObj: any) {
   //   let vehicle_number : any = newObj.target.value;
-    
+
   //   this.restApi.vehicleBasedModel(vehicle_number).subscribe((data: any) => {
   //     console.log('POST Request is successful >>>>>>>>', data.status);
   //     if(data.status == "pass") {
@@ -744,15 +758,16 @@ slideConfig1 = {"slidesToShow": 1, "slidesToScroll": 1};
   //   },
   //   success => {
   //     console.log('Error>>>>>', success);
-      
+
   //   }
   //   );
 
   }
 
   disabledPickupDetails() {
+   // alert(term);
     let pickup_drop = this.onlinebooking.get('pickup_drop').value;
-    // alert(pickup_drop)
+   // alert(pickup_drop)
 
     this.onlinebooking.controls.pickup_date.setValue("");
     this.onlinebooking.controls.instructions.setValue("");
@@ -763,28 +778,31 @@ slideConfig1 = {"slidesToShow": 1, "slidesToScroll": 1};
     let start_date = (<HTMLInputElement>document.getElementById("pickupdateTdid")).value;
     let end_date = (<HTMLInputElement>document.getElementById("droptimetdid")).value;
     if(start_date > end_date) {
-      // alert("yes")
+      // alert(start_date))
     //  alert(2);
       (<HTMLInputElement>document.getElementById("enddate_message1")).style.display ="block";
     }
 
-  else if(pickup_drop == false) {
-      (<HTMLInputElement>document.getElementById("pickupupDropInstructionId")).style.display = "block";
-      (<HTMLInputElement>document.getElementById("pickupdateTdid")).style.display = "block";  
-      (<HTMLInputElement>document.getElementById("pickuptimetdid")).style.display = "block";
-      (<HTMLInputElement>document.getElementById("dropdatetdid")).style.display = "block";  
-      (<HTMLInputElement>document.getElementById("droptimetdid")).style.display = "block"; 
-    }
-    else {
-      (<HTMLInputElement>document.getElementById("pickupupDropInstructionId")).style.display = "none";
-      (<HTMLInputElement>document.getElementById("pickupdateTdid")).style.display = "none";
-      (<HTMLInputElement>document.getElementById("pickuptimetdid")).style.display = "none";
-      (<HTMLInputElement>document.getElementById("dropdatetdid")).style.display = "none"; 
-      (<HTMLInputElement>document.getElementById("droptimetdid")).style.display = "none";
-    }
-    
-    
+  if(pickup_drop == true) {
+    //alert(pickup_drop);
+    this.onlinebooking.get('pickup_date').enable();
+    this.onlinebooking.get('pickup_time').enable();
+    this.onlinebooking.get('drop_date').enable();
+    this.onlinebooking.get('drop_time').enable();
+    this.onlinebooking.get('instructions').enable();
+
+   }
+   else {
+    this.onlinebooking.get('pickup_date').disable();
+    this.onlinebooking.get('pickup_time').disable();
+    this.onlinebooking.get('drop_date').disable();
+    this.onlinebooking.get('drop_time').disable();
+    this.onlinebooking.get('instructions').disable();
+     }
+
+
   }
+
 
 }
 

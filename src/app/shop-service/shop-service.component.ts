@@ -39,7 +39,7 @@ export class ShopServiceComponent implements  OnInit{
    ProfileDataByIdObject:  any;
    ShopProfileDetails: any;
    statuspickupvalue: any;
-   
+
   rateControl: FormControl;
   constructor(private http: HttpClient,private router: Router,
     public restApi: RestApiService,private toastr: ToastrService,public datepipe: DatePipe,
@@ -60,10 +60,10 @@ export class ShopServiceComponent implements  OnInit{
       currentPage: 1,
       // totalItems: this.collection.count
 
-     
+
     };
 
-   
+
 
     this.shopserviceForm = this.frmbuilder.group({
       service_id: ['', Validators.required],
@@ -182,7 +182,7 @@ export class ShopServiceComponent implements  OnInit{
     let model_id = (<HTMLInputElement>document.getElementById("model_"+obj)).value;
     let currentUserId = localStorage.getItem('currentUserId');
 
-    if (Number(service_amount)  < 0){ 
+    if (Number(service_amount)  < 0){
       (<HTMLInputElement>document.getElementById(service_amountid)).focus();
       let validateamount = "validateamount1_"+obj;
       (<HTMLInputElement>document.getElementById(validateamount)).style.display ="block";
@@ -206,7 +206,7 @@ export class ShopServiceComponent implements  OnInit{
 
                      }))
     }
-    
+
     else {
       (<HTMLInputElement>document.getElementById(service_amountid)).focus();
       let validateamount = "validateamount_"+obj;
@@ -248,7 +248,7 @@ export class ShopServiceComponent implements  OnInit{
 
       (<HTMLInputElement>document.getElementById(validateoffer2)).style.display ="block";
     }
-    
+
   else  if(Number(offerpercentage) != 0 && fromdate !="" && todate !="" ) {
 
                   if(todate<fromdate)
@@ -304,15 +304,15 @@ export class ShopServiceComponent implements  OnInit{
 
       (<HTMLInputElement>document.getElementById(validateoffer1)).style.display ="block";
     }
-    
-   
+
+
     else {
       (<HTMLInputElement>document.getElementById(offer_percent)).focus();
 
       (<HTMLInputElement>document.getElementById(validateoffer)).style.display ="block";
     }
 
-  
+
   }
   getOfferPrice(term: string,termid: string): void
   {
@@ -332,15 +332,17 @@ export class ShopServiceComponent implements  OnInit{
       //alert(offeramount);
       var offeramtid;
       var originalVal = serviceamount - offeramount;
+      alert(originalVal);
       offeramtid="offeramount_"+splitted[1]+"_"+splitted[2];
-      if(Number(offeramtid)  >0){
+
+      if(offeramtid  >0){
         (<HTMLInputElement>document.getElementById(offeramtid)).value =originalVal.toString();
       }
       else{
         (<HTMLInputElement>document.getElementById(offeramtid)).value = "";
       }
      // console.log(offeramtid);
-  
+
 
 
   }
@@ -571,7 +573,7 @@ success => {
   }
 
   changepickupStatus(statuspickupvalue : any) {
-    
+
     let currentUserId = localStorage.getItem('currentUserId');
 
        var changepickupStatus =
@@ -579,31 +581,31 @@ success => {
                        "shopid": currentUserId,
                         "pickupstatus": statuspickupvalue,
                       }
-   
+
    this.restApi. changepickupStatus(changepickupStatus).subscribe((data: any) => {
      console.log('POST Request is successful >>>>>>>>', data.status);
-     if(data.status == "pass") 
+     if(data.status == "pass")
      {
      this. readProfileDataById()
      }
    },
    success => {
      console.log('Error>>>>>', success);
-   
-   
-   
+
+
+
    }
    );
      }
 
      readProfileDataById() {
-   
-      
+
+
       let currentShopId = localStorage.getItem('currentUserId');
       return this.restApi.readShopProfileDataById(currentShopId).subscribe((res)=>{
         this.ProfileDataByIdObject = res
-    
-        
+
+
         this.ShopProfileDetails = this.ProfileDataByIdObject.data.profile
 
         this.statuspickupvalue = this.ShopProfileDetails.is_pickup_drop_avl
@@ -611,12 +613,12 @@ success => {
         console.log(this.statuspickupvalue);
 
         //console.log(this.ShopProfileDetails)
-        
+
       }
-        
-      
+
+
       )
-      
+
     }
 }
 
