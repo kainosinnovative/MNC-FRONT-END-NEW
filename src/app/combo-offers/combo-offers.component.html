@@ -19,7 +19,7 @@
           <div class="col-sm-3 databtn fromdatecls" style="text-align: left;">
             <label style="width: 74px;">From date</label>  
             <!-- <p class="labelFieldSpace" style="display: block;"></p> -->
-             <input type="date" id="combooffer_fromdate" min="{{current_date}}" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;" >
+             <input type="date" id="combooffer_fromdate" min="{{current_date}}" value="{{date | date:'yyyy-MM-dd'}}" style="width: 120px;" >
           </div>
 
           <!-- <div class="col-sm-1">
@@ -29,7 +29,7 @@
           <div class="col-sm-3 databtn" style="margin-left: 16px;">
             <label style="width: 59px;">To date</label>  
             <!-- <p class="labelFieldSpace" style="display: block;"></p> -->
-             <input (click)="dateErrorMsg()" class="todate" type="date" id="combooffer_todate" min="{{current_date}}" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;">
+             <input (click)="dateErrorMsg()" class="todate" type="date" id="combooffer_todate" min="{{current_date}}" value="{{date | date:'yyyy-MM-dd'}}" style="width: 120px;">
             <br><span id="enddate_message" style="color: red;display: none;">To date Invalid</span>
           </div>
           <!-- <div class="col-sm-1"></div> -->
@@ -154,7 +154,7 @@
             <td>
               <label class="offernmsbtn" style="width:80px;">Offer Name</label>
               <br>
-              <select class="offernmsbtn1" id="offername"  style="width:130px;height: 24px;" (change)="custom()">
+              <select class="offernmsbtn1" id="offername"  style="width:120px;height: 24px;" (change)="custom()">
               <option value="">--Select--</option>
               <option value="Basic">Basic</option>
               <option value="Classic">Classic</option>
@@ -173,7 +173,7 @@
                 <!-- <div class="col-sm-1"></div> -->
                 <!-- <div class="col-sm-8"> -->
                   <!-- <br> -->
-                   <input type="text" (keyup)="RemoveoffercustomnameError()"  id="offercustomname" class="offercustcls" style="padding-top: 11px;width: 130px;height: 24px;text-align: left;padding-left:15px;">
+                   <input type="text" (keyup)="RemoveoffercustomnameError()"  id="offercustomname" class="offercustcls" style="padding-top: 11px;width: 120px;height: 24px;text-align: left;padding-left:15px;">
   
                 <span style="color: red;display: none;text-align: center;" id="offercustomnameError">Enter Offer Name</span>
               <!-- </div> -->
@@ -189,7 +189,7 @@
       <div class="col-sm-2">
         <label class="offerpreg1" style="width: 80px;">Offer (%)</label>
         <br>
-        <input  class="offerpreg2" type="number" (keyup)="getOfferPrice($event)" id="combooffer_offerpercent" style="width: 50px;height: 24px" positive>
+        <input  class="offerpreg2" type="number" (keyup)="getOfferPrice($event)" id="combooffer_offerpercent" style="width: 40px;height: 24px" positive>
   
         <p style="color: red;display: none;text-align: left;" id="offerpercentError">Enter offer %</p>
         <p style="color: red;display: none;text-align: left;" id="offerpercentError1">Invalid Offer %</p>
@@ -197,7 +197,7 @@
        </div>
   
       <div class="col-sm-3 offamtdiv">
-        <label class="offeramt spaceOffAmount2" >Offer Amount&nbsp;(<i class="fa fa-rupee"></i>)</label> <br> <input readonly class="offeramt" type="text" id="combooffer_offeramount" style="width: 80px;height: 24px;text-align:left;">
+        <label class="offeramt spaceOffAmount2" >Offer Amount&nbsp;(<i class="fa fa-rupee"></i>)</label> <br> <input readonly class="offeramt" type="text" id="combooffer_offeramount" style="width: 70px;height: 24px;text-align:left;">
         </div>
 
         <div class="col-sm-3 databtn2">
