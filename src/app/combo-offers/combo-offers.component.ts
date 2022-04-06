@@ -271,8 +271,8 @@ this.loadcombooffertblByModelid(1);
 AddComboOffer() {
   (<HTMLInputElement>document.getElementById("offercustomnameError")).style.display="none";
   (<HTMLInputElement>document.getElementById("offernameError")).style.display="none";
-  // let start_date = (<HTMLInputElement>document.getElementById("combooffer_fromdate")).value;
-  // let end_date = (<HTMLInputElement>document.getElementById("combooffer_todate")).value;
+  let start_date = (<HTMLInputElement>document.getElementById("combooffer_fromdate")).value;
+  let end_date = (<HTMLInputElement>document.getElementById("combooffer_todate")).value;
   let combooffer_offerpercent = (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).value;
   let Selectedserviceid = (<HTMLInputElement>document.getElementById("Selectedserviceid")).value;
   let combo_price = (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value;
@@ -357,8 +357,8 @@ else {
                 "combo_price": combo_price,
                 "shop_id":currentUserId,
                 "offer_percent":combooffer_offerpercent,
-                // "start_date":start_date,
-                // "end_date":end_date,
+                "start_date":start_date,
+                "end_date":end_date,
                 "model_id":model_id,
                 "offer_name":offername,
                 "original_amount":totalamount

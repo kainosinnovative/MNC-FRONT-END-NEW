@@ -10,27 +10,30 @@
       
   
       <div class="col-sm-5" >
+        <div style="border: 1px solid;margin-left: 12px;">
   <div >
     <h2 style="text-align: left;" class="mainheading combooffheading">Add Today's Combo Offer</h2>
-        <div class="row">
-          <div class="col-sm-1">
-  
-          </div>
+        <div class="row dateselectdivcls" >
+          
           
           <div class="col-sm-3 databtn fromdatecls" style="text-align: left;">
             <label style="width: 74px;">From date</label>  
             <!-- <p class="labelFieldSpace" style="display: block;"></p> -->
              <input type="date" id="combooffer_fromdate" min="{{current_date}}" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;" >
           </div>
+
+          <!-- <div class="col-sm-1">
+            
+          </div> -->
   
-          <div class="col-sm-3 databtn">
+          <div class="col-sm-3 databtn" style="margin-left: 16px;">
             <label style="width: 59px;">To date</label>  
             <!-- <p class="labelFieldSpace" style="display: block;"></p> -->
              <input (click)="dateErrorMsg()" class="todate" type="date" id="combooffer_todate" min="{{current_date}}" value="{{date | date:'yyyy-MM-dd'}}" style="width: 130px;">
             <br><span id="enddate_message" style="color: red;display: none;">To date Invalid</span>
           </div>
-  
-          <div class="col-sm-3 databtn">
+          <!-- <div class="col-sm-1"></div> -->
+          <div class="col-sm-3 databtn" style="margin-left: 16px;">
             <label style="width: 53px;">Model</label> 
             <!-- <p class="labelFieldSpace" style="display: block;"></p> -->
                           <select  class="model"  style="width: 130px;height: 24px;" (change)="loadcombooffertblByModelid(2)" id="model_id">
@@ -42,7 +45,7 @@
                               </select>
           </div>
   
-  
+          
   
         </div>
   
@@ -56,7 +59,7 @@
   <div id="secondtblid2" class="onchangetable" style="display: none;">
 
         
-    <table  class="table table-responsive addcombooffer"  style="text-align:center;width: 73%;border: 0.5px solid #000000 !important;margin-left:46px;overflow: auto;" >
+    <table  class="table table-responsive addcombooffer"  style="text-align:center;width: 72%;border: 0.5px solid #000000 !important;margin-left:75px;overflow: auto;" >
       <thead style="background: #202c45;color:white;">
         <tr >
 
@@ -98,7 +101,7 @@
       
     </table>
 <div style="margin-top: -12px;">
-    <table style="text-align:center;width: 73%;margin-left:46px;overflow: auto;">
+    <table class="totaltblcls" style="text-align:center;width: 72%;margin-left:75px;overflow: auto;">
       <tbody style="border: none !important;">
         <tr>
           <td  style="width: 50px;"></td>
@@ -139,7 +142,7 @@
     <!-- <br> -->
   
     <div class="row amountwebrow onchangecontent" style="">
-      <div class="col-sm-2"></div>
+      <!-- <div class="col-sm-2"></div> -->
   
   
       <div class="col-sm-3 bottonpadg" style="width:-2% !important;">
@@ -196,11 +199,16 @@
       <div class="col-sm-3 offamtdiv">
         <label class="offeramt spaceOffAmount2" >Offer Amount&nbsp;(<i class="fa fa-rupee"></i>)</label> <br> <input readonly class="offeramt" type="text" id="combooffer_offeramount" style="width: 80px;height: 24px;text-align:left;">
         </div>
+
+        <div class="col-sm-3 databtn2">
+          <p style="height: 2px;"></p>
+          <button id="addCombobtn" class="allSubmitbtn addbtn btn"   (click)="AddComboOffer()">Add Offer</button>
+        </div>
   
      </div>
   
-     <div  class="row amountwebrow addbtncls" style="margin-top:10px;">
-      <!-- <div class="col-sm-1" ></div> -->
+     <!-- <div  class="row amountwebrow addbtncls" style="margin-top:10px;">
+      
       <div class="col-sm-10 addofferbtncls" >
         <div  class="addofferbtncls2" style="text-align: right;">
           <button id="addCombobtn" class="allSubmitbtn addbtn btn"   (click)="AddComboOffer()">Add Offer</button>
@@ -209,7 +217,7 @@
       <div class="col-sm-1" ></div>
   
   
-    </div>
+    </div> -->
   <br>
   
   
@@ -220,6 +228,7 @@
   </div>
   
   </div>
+</div>
       </div>
   
       <div class="col-sm-7">
@@ -284,8 +293,8 @@
                   <th style="width:250px;text-align: left" class="fontwghtcls">Services</th>
                   <th style="width:100px;" class="fontwghtcls">From Date</th>
                   <th style="width:100px;" class="fontwghtcls">To Date</th>
-                  <th style="width:120px;" class="fontwghtcls">Offer Percent(%)</th>
-                  <th style="width:125px;text-align: right;" class="fontwghtcls">Offer Amount &nbsp;(<i class="fa fa-rupee"></i>)</th>
+                  <th style="width:60px;" class="fontwghtcls">Offer (%)</th>
+                  <th style="width:85px;text-align: right;" class="fontwghtcls">Offer &nbsp;(<i class="fa fa-rupee"></i>)</th>
                   <th style="width:70px;" class="fontwghtcls">Delete</th>
         
                 <!-- </tr> -->

@@ -155,13 +155,8 @@
                 <div id="pickupdateTdid" *ngIf="getPickupAvlData2 == 1" style="width: 110px;">
                 <label >Pick-up Date <span class="requiredfield">  *</span></label>
     <br>
-<<<<<<< HEAD
-
-    <input class="datecls" min="{{current_date}}" type="date" style="border: 1px solid;height: 34px;width: 116px;" matinput="" formControlName="pickup_date" id="pickup_dateid2" placeholder="Date From" >
-=======
 
     <input class="datecls" min="{{current_date}}" type="date" (change)="datapicker()" style="border: 1px solid;height: 34px;width: 116px;" matinput="" formControlName="pickup_date" id="pickup_dateid2" placeholder="Date From" >
->>>>>>> d165d5905d4cd1f705e023e7adcb3a24763a846a
 </div>
               </td>
 
