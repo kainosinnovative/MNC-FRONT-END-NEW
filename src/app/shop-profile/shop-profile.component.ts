@@ -24,6 +24,8 @@ export class ShopProfileComponent implements OnInit {
   apiurlforhtm = config_url;
   d:any;
 shopprofile : any;
+shopprofile1:any;
+shopprofile2:any;
 date: any;
 ShopProfileDetails :any;
 ProfileDataByIdObject:any;
@@ -94,28 +96,47 @@ let current_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
   const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   const mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
   const zipcodePattern = "^[1-9][0-9]{5}$";
-  this.shopprofile = this.frmbuilder.group({
+  this.shopprofile1 = this.frmbuilder.group({
     name:['', Validators.required],
+    doorno: ['', Validators.required],
+    street: ['', Validators.required],
+    city: ['', Validators.required],
+    state: ['', Validators.required],
+    zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
+    lastupddt: [current_date, [Validators.required]],
+    shop_id:[currentShopId, [Validators.required]],
+  }
+  )
+  this.shopprofile = this.frmbuilder.group({
+    // name:['', Validators.required],
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
     dob:[],
-    doorno: ['', Validators.required],
-    state: ['', Validators.required],
+    // doorno: ['', Validators.required],
+    // state: ['', Validators.required],
     gender: ['', Validators.required],
-    city: ['', Validators.required],
-    street: ['', Validators.required],
+    // city: ['', Validators.required],
+    // street: ['', Validators.required],
     aadharno:[],
   //  aadharno: ['', Validators.required],
     // aadharno: ['', [Validators.required, Validators.pattern(aadharPattern)]],
-    zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
+    // zipcode: ['', [Validators.required, Validators.pattern(zipcodePattern)]],
      emailid: ['', [Validators.required, Validators.pattern(emailPattern)]],
      mobileno:['', [Validators.required, Validators.pattern(mobilePattern)]],
     lastupddt: [current_date, [Validators.required]],
     shop_id:[currentShopId, [Validators.required]],
-    shop_timing_from:['',[Validators.required]],
-    shop_timing_to:['',[Validators.required]]
+    // shop_timing_from:['',[Validators.required]],
+    // shop_timing_to:['',[Validators.required]]
   
     })   
+
+    this.shopprofile2 = this.frmbuilder.group({
+      shop_timing_from:['',[Validators.required]],
+    shop_timing_to:['',[Validators.required]],
+      lastupddt: [current_date, [Validators.required]],
+      shop_id:[currentShopId, [Validators.required]],
+    }
+    )
     
     
     let yesterday = new Date(new Date().setDate(new Date().getDate()-1));
@@ -148,6 +169,32 @@ this.config1 = {
     
   }
 
+ 
+
+  updateshopinfo(shopprofile1:any) {
+console.log(shopprofile1);
+this.http.post(config_url+'/shop/AddShopdetails',shopprofile1)
+      .subscribe(res => {
+      
+      }, (err) => {
+     
+    });
+  
+    this.toastr.success('Shop info updated successfully');
+  }
+
+  updateworkinghours(shopprofile2:any) {
+    this.http.post(config_url+'/shop/AddShopdetails',shopprofile2)
+      .subscribe(res => {
+      
+      }, (err) => {
+     
+    });
+  
+    this.toastr.success('Working hours updated successfully');
+
+  }
+
   uploadFile(shopprofile:any)
   {
     var regexp=/^[2-9]{1}[0-9]{3}\s{1}[0-9]{4}\s{1}[0-9]{4}$/;
@@ -161,7 +208,7 @@ this.config1 = {
      
     });
   
-    this.toastr.success('Profile Updated Successfully');
+    this.toastr.success('Shop owner info updated successfully');
     }
     else {
    if(regexp.test(x))
@@ -173,7 +220,7 @@ this.config1 = {
        
       });
     
-      this.toastr.success('Profile Updated Successfully');
+      this.toastr.success('Shop owner info updated successfully');
            
        }
 else{ 

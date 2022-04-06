@@ -3,7 +3,7 @@
     <!-- *ngFor = "let news  of ShopProfileDetails" -->
     <div style="margin-left: -66px;">
        
-    <form [formGroup]="shopprofile" >
+    
 
         <div class="accordion1">
             <h2 class="title2 subheading" (click)="opened2 = !opened2">Shop Information<i class="fa fa-chevron-down"></i> </h2> 
@@ -35,6 +35,7 @@
                     <!--endphoto-->
                 </div>
               <br>
+              <form [formGroup]="shopprofile1" >
                 <div class="row ">
                     <div class="col-sm-4"  style="padding-right:0px !important;">
                                         <div class="form-group form-inline">
@@ -42,10 +43,10 @@
                                             <label style class="">Shop Name</label><span class="requiredfield">  *</span>
                                             <p class="labelFieldSpace" style="display: none;"></p>
                                                 <input type="text"  class="form-control  firstLastnamecls2" [(ngModel)]="ShopProfileDetails.name" formControlName="name" value="{{ShopProfileDetails.name}}" >
-                                                <div *ngIf="shopprofile.controls['name'].touched && shopprofile.controls['name'].invalid "> 
+                                                <div *ngIf="shopprofile1.controls['name'].touched && shopprofile1.controls['name'].invalid "> 
                             
-                                                    <div *ngIf="shopprofile.controls['name'].errors" style="color: red;"> 
-                                                    <div *ngIf="shopprofile.controls['name'].errors.required" style="font-size: 12px;">
+                                                    <div *ngIf="shopprofile1.controls['name'].errors" style="color: red;"> 
+                                                    <div *ngIf="shopprofile1.controls['name'].errors.required" style="font-size: 12px;">
                                                         Enter your shop name 
                                                     </div> 		   
                                                     
@@ -67,10 +68,10 @@
                                   </option>
                             
                                 </select>
-                                <div *ngIf="shopprofile.controls['city'].touched && shopprofile.controls['city'].invalid "> 
+                                <div *ngIf="shopprofile1.controls['city'].touched && shopprofile1.controls['city'].invalid "> 
             
-                                    <div *ngIf="shopprofile.controls['city'].errors" style="color: red;"> 
-                                    <div *ngIf="shopprofile.controls['city'].errors.required" style="font-size: 12px;" class="leftnamemrg">
+                                    <div *ngIf="shopprofile1.controls['city'].errors" style="color: red;"> 
+                                    <div *ngIf="shopprofile1.controls['city'].errors.required" style="font-size: 12px;" class="leftnamemrg">
                                         Select city
                                     </div> 		   
                                     
@@ -92,10 +93,10 @@
                             <p class="labelFieldSpace" style="display: none;"></p>
 
                             <input type="text" style="width: 250px;" class="form-control  address2" placeholder="" formControlName="doorno" [(ngModel)]="ShopProfileDetails.doorno">
-                                <div *ngIf="shopprofile.controls['doorno'].touched && shopprofile.controls['doorno'].invalid "> 
+                                <div *ngIf="shopprofile1.controls['doorno'].touched && shopprofile1.controls['doorno'].invalid "> 
               
-                                <div *ngIf="shopprofile.controls['doorno'].errors" style="color: red;"> 
-                                  <div *ngIf="shopprofile.controls['doorno'].errors.required" style="font-size: 12px;" class="leftnamemrg">
+                                <div *ngIf="shopprofile1.controls['doorno'].errors" style="color: red;"> 
+                                  <div *ngIf="shopprofile1.controls['doorno'].errors.required" style="font-size: 12px;" class="leftnamemrg">
                                       Enter your address
                                   </div> 		   
                                  
@@ -113,10 +114,10 @@
                                    {{statetypes.name}}
                                </option>
                                 </select>
-                                <div *ngIf="shopprofile.controls['state'].touched && shopprofile.controls['state'].invalid "> 
+                                <div *ngIf="shopprofile1.controls['state'].touched && shopprofile1.controls['state'].invalid "> 
               
-                                    <div *ngIf="shopprofile.controls['state'].errors" style="color: red;"> 
-                                      <div *ngIf="shopprofile.controls['state'].errors.required" style="font-size: 12px;" class="leftnamemrg">
+                                    <div *ngIf="shopprofile1.controls['state'].errors" style="color: red;"> 
+                                      <div *ngIf="shopprofile1.controls['state'].errors.required" style="font-size: 12px;" class="leftnamemrg">
                                           Select state
                                       </div> 		   
                                      
@@ -135,10 +136,10 @@
                                 <label class="leftnamemrg">Street Name</label><span class="requiredfield">  *</span>
                                 <p class="labelFieldSpace" style="display: none;"></p>
                                 <input type="text" style="width: 236px;" class="form-control  streetcls" placeholder="" formControlName="street" [(ngModel)]="ShopProfileDetails.street">
-                                <div *ngIf="shopprofile.controls['street'].touched && shopprofile.controls['street'].invalid "> 
+                                <div *ngIf="shopprofile1.controls['street'].touched && shopprofile1.controls['street'].invalid "> 
                 
-                                    <div *ngIf="shopprofile.controls['street'].errors" style="color: red;"> 
-                                    <div *ngIf="shopprofile.controls['street'].errors.required" style="font-size: 12px;">
+                                    <div *ngIf="shopprofile1.controls['street'].errors" style="color: red;"> 
+                                    <div *ngIf="shopprofile1.controls['street'].errors.required" style="font-size: 12px;">
                                         Enter your street
                                     </div> 	   
                                     
@@ -151,17 +152,17 @@
                                     <label class="leftnamemrg">Zipcode</label><span class="requiredfield"> *</span>
                                     <p class="labelFieldSpace" style="display: none;"></p>
                                     <input type="text" class="form-control shopzipcodecls2 "  placeholder=""   minLength="5" maxLength="6"  formControlName="zipcode" [(ngModel)]="ShopProfileDetails.zipcode">
-                                    <div *ngIf="shopprofile.controls['zipcode'].touched && shopprofile.controls['zipcode'].invalid "> 
+                                    <div *ngIf="shopprofile1.controls['zipcode'].touched && shopprofile1.controls['zipcode'].invalid "> 
                     
-                                        <div *ngIf="shopprofile.controls['zipcode'].errors" style="color: red;"> 
-                                            <div *ngIf="shopprofile.controls['zipcode'].errors.required" style="font-size: 12px;">
+                                        <div *ngIf="shopprofile1.controls['zipcode'].errors" style="color: red;"> 
+                                            <div *ngIf="shopprofile1.controls['zipcode'].errors.required" style="font-size: 12px;">
                                                 Zipcode is required
                                             </div> 		   
                                             
                                         </div> 
         
-                                        <div *ngIf="shopprofile.controls['zipcode'].errors" style="color: red;"> 
-                                            <div *ngIf="shopprofile.controls['zipcode'].errors.pattern" style="font-size: 12px;">
+                                        <div *ngIf="shopprofile1.controls['zipcode'].errors" style="color: red;"> 
+                                            <div *ngIf="shopprofile1.controls['zipcode'].errors.pattern" style="font-size: 12px;">
                                                 Zipcode  not valid
                                             </div> 		   
                                         
@@ -177,15 +178,23 @@
 
                 
                 </div><!--End of row-->
-          
+
+                <div class="col-sm-12 form-inline" style="text-align: right;">
+            
+                    <button class="btn btn-success allSubmitbtn" style="margin-right: 14px;" (click)="updateshopinfo(shopprofile1.value)" [disabled]='!shopprofile1.valid' >Update</button>
+                    <!-- [disabled]='!shopprofile.valid' -->
+                    
+            
+                </div>
+            </form>
                 </div>
                 
             </div>
             </div>
 
-
+            <form [formGroup]="shopprofile" >
     <div class="accordion">
-        <h2 class="title subheading" (click)="opened = !opened">Personal Information <i class="fa fa-chevron-down"></i> </h2> 
+        <h2 class="title subheading" (click)="opened = !opened">Shop Owner Information <i class="fa fa-chevron-down"></i> </h2> 
         <div class="content-container" [class.opened]="opened">
             <!--phto-->
         
@@ -357,11 +366,22 @@
                 
                 </div><!--End of row-->
 
+                <div class="col-sm-12 form-inline" style="text-align: right;">
+            
+                    <button class="btn btn-success allSubmitbtn" style="margin-right: 14px;" (click)="uploadFile(shopprofile.value)" [disabled]='!shopprofile.valid' >Update</button>
+                    <!-- [disabled]='!shopprofile.valid' -->
+                    
+            
+                </div>
+
             </div><!--End of formgroup-->
 
 
     
     </div><!--End of Accordion-->
+    </form>
+
+    <form [formGroup]="shopprofile2" >
     <div class="accordion1">
         <h2 class="title1 subheading" (click)="opened1 = !opened1">Business Hours <i class="fa fa-chevron-down"></i> </h2> 
         <div class="content-container1" [class.opened1]="opened1">
@@ -385,10 +405,10 @@
                         <option value="10.30">10.30 AM</option>
                         </select>
                         
-                        <div *ngIf="shopprofile.controls['shop_timing_from'].touched && shopprofile.controls['shop_timing_from'].invalid "> 
+                        <div *ngIf="shopprofile2.controls['shop_timing_from'].touched && shopprofile2.controls['shop_timing_from'].invalid "> 
             
-                            <div *ngIf="shopprofile.controls['shop_timing_from'].errors" style="color: red;"> 
-                            <div *ngIf="shopprofile.controls['shop_timing_from'].errors.required" style="font-size: 12px;">
+                            <div *ngIf="shopprofile2.controls['shop_timing_from'].errors" style="color: red;"> 
+                            <div *ngIf="shopprofile2.controls['shop_timing_from'].errors.required" style="font-size: 12px;">
                                 Select the Timings
                             </div> 		   
                             
@@ -409,10 +429,10 @@
                                     <option value="6">6.30 PM</option>
                                     <option value="7.00">7.30 PM</option>
                                     </select>
-                                    <div *ngIf="shopprofile.controls['shop_timing_to'].touched && shopprofile.controls['shop_timing_to'].invalid "> 
+                                    <div *ngIf="shopprofile2.controls['shop_timing_to'].touched && shopprofile2.controls['shop_timing_to'].invalid "> 
                     
-                                        <div *ngIf="shopprofile.controls['shop_timing_to'].errors" style="color: red;"> 
-                                        <div *ngIf="shopprofile.controls['shop_timing_to'].errors.required" style="font-size: 12px;">
+                                        <div *ngIf="shopprofile2.controls['shop_timing_to'].errors" style="color: red;"> 
+                                        <div *ngIf="shopprofile2.controls['shop_timing_to'].errors.required" style="font-size: 12px;">
                                             Select the Timings
                                         </div> 		   
                                         
@@ -426,6 +446,14 @@
                     
                     
                         
+                        
+                            </div>
+<br>
+                            <div class="col-sm-11 form-inline workinghoursupdcls" style="text-align: right;">
+            
+                                <button class="btn btn-success allSubmitbtn" style="margin-right: 14px;" (click)="updateworkinghours(shopprofile2.value)" [disabled]='!shopprofile2.valid' >Update</button>
+                                <!-- [disabled]='!shopprofile.valid' -->
+                                
                         
                             </div>
             
@@ -550,13 +578,7 @@
                 
             
 
-    <div class="col-sm-12 form-inline" style="text-align: right;">
-            
-        <button class="btn btn-success allSubmitbtn" style="margin-right: 14px;" (click)="uploadFile(shopprofile.value)" [disabled]='!shopprofile.valid' >Update</button>
-        <!-- [disabled]='!shopprofile.valid' -->
-        
-
-    </div>
+    
     <br>
 
     </form>
