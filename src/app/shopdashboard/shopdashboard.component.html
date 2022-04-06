@@ -19,7 +19,7 @@
 
         </tr>
       </thead>
-     
+
       <tbody>
         <tr *ngFor="let b of  posts | paginate: config ;  let i=index;" style="border-bottom:1px solid #aeaeae;text-align: left;">
 
@@ -47,7 +47,7 @@
           <!-- <td>{{b.serviceprice_total}}</td> -->
           <td >
             <p style="text-align: right;margin-right: 78px;">{{b.payable_amt}}</p>
-            
+
           </td>
           <!-- <td>
             <span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
@@ -110,9 +110,9 @@
                 <p style="margin-left: 60px;">{{b.bookingdate | date: 'dd-MM-yyyy'}}</p>
               </td>
               <td style="text-align: left;"><p style="margin-left: 136px;">{{b.firstname}}</p></td>
-              
+
               <td ><p style="text-align: right;margin-right: 74px;">{{b.payable_amt}}</p></td>
-              
+
                 <td hidden>
                   <span *ngFor="let m1 of  carwashstatus1;" >
 
@@ -220,8 +220,8 @@
                     </div>
                     <!-- <div class="col-sm-4" ></div> -->
                   </div>
-              
-              
+
+
                 </div>
               </div>
 

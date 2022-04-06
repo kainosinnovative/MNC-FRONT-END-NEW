@@ -521,7 +521,7 @@ console.log(error.status)
 
 
   selectEvent(item:any) {
-    this.toastr.error("Enter New Service Name,");
+    this.toastr.error("Enter New Service Name");
     this.MasterserviceForm.controls.service_name.setValue("");
   }
 
