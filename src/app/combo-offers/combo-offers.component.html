@@ -246,7 +246,7 @@
                 <option *ngFor="let mon of month" [value]="mon.id">{{mon.name}}</option>
         
               </select> -->
-              <ng-select
+              <ng-select style=" padding-top: 0px !important; padding-left: 1px !important;"
           [items]="month"
           bindLabel="name"
           placeholder="Select Category"
@@ -261,7 +261,7 @@
             <div class="col-sm-4">
               <label style="width: 59px;">Year</label>
             
-                <ng-select
+                <ng-select 
           [items]="year"
           bindLabel="name"
           placeholder="Select Category"
