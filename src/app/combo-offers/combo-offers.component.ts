@@ -51,7 +51,7 @@ export class ComboOffersComponent implements OnInit {
   combooffertblByModelid1:any;
   addoffermsg:any;
   addoffermsg1:any;
-  opened = false;
+  opened = true;
  curmonth:any;
  shortMonth:any;
  ComboCurrentyear:any;
@@ -96,12 +96,15 @@ this.loadcombooffertblByModelid(1);
     // alert("hi");
     (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).value = "";
     (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value = "";
+    if((<HTMLInputElement>document.getElementById("totalamount")) != null) {
     (<HTMLInputElement>document.getElementById("totalamount")).value = "";
+    }
     (<HTMLInputElement>document.getElementById("addCombobtn")).disabled=true;
     (<HTMLInputElement>document.getElementById("addCombobtn")).style.opacity=".65";
-    if(a == 2)
+    if(a == 2){
     (<HTMLInputElement>document.getElementById("secondtblid")).style.display = "block";
-
+    (<HTMLInputElement>document.getElementById("secondtblid2")).style.display = "block";
+    }
     let model_id = (<HTMLInputElement>document.getElementById("model_id")).value;
     let start_date = (<HTMLInputElement>document.getElementById("combooffer_fromdate")).value;
     let end_date = (<HTMLInputElement>document.getElementById("combooffer_todate")).value;
@@ -268,8 +271,8 @@ this.loadcombooffertblByModelid(1);
 AddComboOffer() {
   (<HTMLInputElement>document.getElementById("offercustomnameError")).style.display="none";
   (<HTMLInputElement>document.getElementById("offernameError")).style.display="none";
-  // let start_date = (<HTMLInputElement>document.getElementById("combooffer_fromdate")).value;
-  // let end_date = (<HTMLInputElement>document.getElementById("combooffer_todate")).value;
+  let start_date = (<HTMLInputElement>document.getElementById("combooffer_fromdate")).value;
+  let end_date = (<HTMLInputElement>document.getElementById("combooffer_todate")).value;
   let combooffer_offerpercent = (<HTMLInputElement>document.getElementById("combooffer_offerpercent")).value;
   let Selectedserviceid = (<HTMLInputElement>document.getElementById("Selectedserviceid")).value;
   let combo_price = (<HTMLInputElement>document.getElementById("combooffer_offeramount")).value;
@@ -354,8 +357,8 @@ else {
                 "combo_price": combo_price,
                 "shop_id":currentUserId,
                 "offer_percent":combooffer_offerpercent,
-                // "start_date":start_date,
-                // "end_date":end_date,
+                "start_date":start_date,
+                "end_date":end_date,
                 "model_id":model_id,
                 "offer_name":offername,
                 "original_amount":totalamount

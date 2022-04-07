@@ -49,6 +49,12 @@ body {
   //margin-left:37%;
   display:none;
 }
+
+.ng-select .ng-select-container {
+
+  width: 93% !important;
+}
+
 @media screen and (min-width: 768px) {
   .mat-autocomplete-panel.mat-autocomplete-visible {
     visibility: visible;
@@ -344,6 +350,13 @@ input[type=number] {
 
 
 .mat-autocomplete-panel.mat-autocomplete-visible {
- 
+
   overflow: auto !important;
+
+}
+.ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  background:brown !important;
+  color: #fefefe;
+  cursor: default;
 }
