@@ -110,9 +110,9 @@
           <td style="width: 100px;text-align: right;"><span ></span>
             
               
-                <label class="amt" style="width: 70px;">Total &nbsp;(<i class="fa fa-rupee"> </i>)</label>
-                <br>
-                <input type="number" min="1" class="amt1" readonly id="totalamount" style="width: 80px;height: 24px;text-align: left;">
+                <label class="amt" style="width: 70px;text-align: right; padding-right: 3px;">Total &nbsp;(<i class="fa fa-rupee"> </i>)</label>
+              
+                <input type="number" min="1" class="amt1" readonly id="totalamount" style="width: 80px;height: 24px;text-align: right;">
     
               
            
@@ -141,7 +141,7 @@
   
     <!-- <br> -->
   
-    <div class="row amountwebrow onchangecontent" style="">
+    <div class="row amountwebrow onchangecontent">
       <!-- <div class="col-sm-2"></div> -->
   
   
@@ -202,7 +202,7 @@
 
         <div class="col-sm-3 databtn2">
           <p style="height: 2px;"></p>
-          <button id="addCombobtn" class="allSubmitbtn addbtn btn"   (click)="AddComboOffer()">Add Offer</button>
+          <button id="addCombobtn" style=" width: 68px; border: none; height: 28px;" class="allSubmitbtn addbtn btn"   (click)="AddComboOffer()">Add</button>
         </div>
   
      </div>
@@ -246,7 +246,7 @@
                 <option *ngFor="let mon of month" [value]="mon.id">{{mon.name}}</option>
         
               </select> -->
-              <ng-select
+              <ng-select style=" padding-top: 0px !important; padding-left: 1px !important;"
           [items]="month"
           bindLabel="name"
           placeholder="Select Category"
@@ -261,7 +261,7 @@
             <div class="col-sm-4">
               <label style="width: 59px;">Year</label>
             
-                <ng-select
+                <ng-select 
           [items]="year"
           bindLabel="name"
           placeholder="Select Category"
@@ -274,7 +274,7 @@
               </div>
             <div class="col-sm-3" >
               <br>
-              <button id="retreive" class="allSubmitbtn btn" style="border:none !important;margin-top: 4px;" (click)="retreivedata()" >Submit</button>
+              <button id="retreive" class="allSubmitbtn btn" style="width: 68px;border: none;height: 28px;" (click)="retreivedata()" >Submit</button>
             </div>
             <div class="col-sm-1" ></div>
         

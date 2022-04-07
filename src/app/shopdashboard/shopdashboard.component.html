@@ -20,7 +20,7 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody >
         <tr *ngFor="let b of  posts | paginate: config ;  let i=index;" style="border-bottom:1px solid #aeaeae;text-align: left;">
 
           <td style="display:none;width: 0px;">{{b.id}}</td>
@@ -191,7 +191,29 @@
                   </div>
                   <!-- <div class="col-sm-1" ></div> -->
                 </div>
+             </div>
 
+
+             <div class="col-sm-6" *ngIf="serviceDataOffers1 !=''">
+              <div class="row" >
+                <div class="col-sm-4" ></div>
+                <div class="col-sm-4" style="text-align: center;">
+                  <h2 style="text-align: center;" class="mainheading"> Combo Offers- Customer Booking Details</h2>
+                  <div style="border: 1px solid #aeaeae;">
+                  <div id="chart" style="text-align: center;">
+                    <apx-chart
+                      [series]="chartOptions3.series"
+                      [chart]="chartOptions3.chart"
+                      [dataLabels]="chartOptions3.dataLabels"
+                      [plotOptions]="chartOptions3.plotOptions"
+                      [xaxis]="chartOptions3.xaxis"
+                    ></apx-chart>
+                  </div>
+                </div>
+                </div>
+                <div class="col-sm-4" ></div>
+              </div>
+           </div>
 
 
               </div>
@@ -225,12 +247,10 @@
                 </div>
               </div>
 
-
-
-
             </div>
             <div>
 
+            </div>
             </div>
 <br>
 

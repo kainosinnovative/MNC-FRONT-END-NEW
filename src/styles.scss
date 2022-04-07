@@ -340,9 +340,9 @@ input[type=number] {
   }
 
 
-  .table {
-    //border: 0.5px solid #000000 !important;
-  }
+  // .table {
+  //   //border: 0.5px solid #000000 !important;
+  // }
 
   .dataTables_wrapper .dataTables_filter {
 
@@ -375,7 +375,7 @@ input[type=number] {
 }
 .ngx-pagination .current {
   padding: 0.1875rem 0.625rem;
-  background:brown !important;
+  background: gray !important;
   color: #fefefe;
   cursor: default;
 }
