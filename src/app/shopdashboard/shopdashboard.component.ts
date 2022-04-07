@@ -44,6 +44,7 @@ export type ChartOptions2 = {
   fill: ApexFill | any;
   legend: ApexLegend | any;
   dataLabels: ApexDataLabels | any;
+  
 
 };
 export type ChartOptions3 = {
@@ -760,15 +761,18 @@ loadServiceDataOffers(){
     this.chartOptions2 = {
       series: this.NormalOfferPercentArr,
       chart: {
+        height:500,
         width: 500,
         type: "donut",
         options: {
-          legend: {
-            show:false,
-            position: 'bottom',
-            
+          
+          "legend": {
+            "position": "bottom",
+            "valign": "top"
           }
-        },
+          
+
+        }
       },
      
       dataLabels: {
@@ -789,7 +793,7 @@ loadServiceDataOffers(){
               width: 350
             },
             legend: {
-              position: "bottom"
+              position: "top"
             },
             dataLabels: {
               enabled: false

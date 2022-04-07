@@ -78,6 +78,8 @@ import { ChartModule } from 'angular-highcharts';
 import { LeavefromtotimeComponent } from './leavefromtotime/leavefromtotime.component';
 import { NgSelectModule } from "@ng-select/ng-select";
 import { SearchshopPopupComponent } from './searchshop-popup/searchshop-popup.component';
+import { DoughnutstackblitzComponent } from './doughnutstackblitz/doughnutstackblitz.component';
+
 
 
 const appRoutes: Routes = [
@@ -109,7 +111,9 @@ const appRoutes: Routes = [
   { path: 'Popupmodal', component: PopupmodalComponent, data: {title: 'PopupmodalComponent'}},
   { path: 'shopownerOnlineBooking/:id', component: ShopownerOnlinebookingComponent, data: {title: 'ShopownerOnlinebooking'}},
   { path: 'a', loadChildren: () => import('./modulea/modulea.module').then(m => m.ModuleaModule) },
-  { path: 'b', loadChildren: () => import('./moduleb/moduleb.module').then(m => m.ModulebModule) }
+  { path: 'b', loadChildren: () => import('./moduleb/moduleb.module').then(m => m.ModulebModule) },
+  { path: 'DoughnutstackblitzComponent', component: DoughnutstackblitzComponent, data: {title: 'DoughnutstackblitzComponent'}},
+  // { path: 'DoughnutcanvasComponent', component: DoughnutcanvasComponent, data: {title: 'DoughnutcanvasComponent'}},
 ];
 @NgModule({
   declarations: [
@@ -146,6 +150,9 @@ const appRoutes: Routes = [
       ShopownerOnlinebookingComponent,
       LeavefromtotimeComponent,
       SearchshopPopupComponent,
+     
+      DoughnutstackblitzComponent,
+      
       
 
 

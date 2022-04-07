@@ -57,6 +57,7 @@
     "ngx-star-rating": "^2.1.0",
     "ngx-toastr": "^14.2.1",
     "owl.carousel": "^2.3.4",
+    "patternomaly": "^1.3.2",
     "platform-browser": "^0.0.1-security",
     "rxjs": "^7.4.0",
     "slick-carousel": "^1.8.1",
