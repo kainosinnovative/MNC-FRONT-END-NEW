@@ -198,14 +198,14 @@
                 <div *ngIf="shopserviceForm.controls['actual_amount'].errors" style="color: red;">
                   <div *ngIf="shopserviceForm.controls['actual_amount'].errors.required" style="font-size: 12px;">
                        Enter the amount
-                  </div>
+                  </div>  
 
                </div>
 
               </div>
           </td>
           <td  >
-            <button class="allSubmitbtn  btn" id="addserviceshopbtn" style="width:68px; border:none; height:28px;font-weight: bold;" (click)="AddShopserviceDetails(shopserviceForm.value)" [disabled]='!shopserviceForm.valid'>Add</button>
+            <button class="allSubmitbtn  btn" id="addserviceshopbtn" style="width:68px; border:none; height:28px;" (click)="AddShopserviceDetails(shopserviceForm.value)" [disabled]='!shopserviceForm.valid'>Add</button>
 
           </td>
 
@@ -270,7 +270,7 @@
             </td>
 
         <td style="text-align: left;">
-              <button class="allSubmitbtn btn" style="margin-top: -9px;margin-left: 12px; width:68px; border:none; height:28px;font-weight: bold;"  (click)="AddMasterserviceDetails(MasterserviceForm.value)" [disabled]='!MasterserviceForm.valid'  >Add</button>
+              <button class="allSubmitbtn btn" style="margin-top: -9px;margin-left: 12px; width:68px; border:none; height:28px;"  (click)="AddMasterserviceDetails(MasterserviceForm.value)" [disabled]='!MasterserviceForm.valid'  >Add</button>
 
             </td>
 
