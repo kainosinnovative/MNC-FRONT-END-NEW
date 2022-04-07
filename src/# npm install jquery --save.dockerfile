@@ -123,3 +123,9 @@ npx angular-cli-ghpages --dir=dist/Project-name
 
 Visit the App Page:
  https://GithubUserName.github.io/GithubRepoName/
+
+
+
+npm install --save ng2-charts
+
+npm install --save chart.js

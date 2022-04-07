@@ -67,7 +67,7 @@ import { ViewbookingdetailsComponent } from './viewbookingdetails/viewbookingdet
 import { ViewbookdetailPopupComponent } from './viewbookdetail-popup/viewbookdetail-popup.component';
 import { PopupmodalComponent } from './popupmodal/popupmodal.component';
 // import { NgChartsModule } from "ng2-charts";
-// import { ChartsModule } from 'ng2-charts/ng2-charts';
+// import { ChartsModule } from 'ng2-charts';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
@@ -79,7 +79,8 @@ import { LeavefromtotimeComponent } from './leavefromtotime/leavefromtotime.comp
 import { NgSelectModule } from "@ng-select/ng-select";
 import { SearchshopPopupComponent } from './searchshop-popup/searchshop-popup.component';
 import { DoughnutstackblitzComponent } from './doughnutstackblitz/doughnutstackblitz.component';
-
+import { DonutchartnewComponent } from './donutchartnew/donutchartnew.component';
+// import { ChartsModule } from 'ng2-charts'
 
 
 const appRoutes: Routes = [
@@ -113,7 +114,7 @@ const appRoutes: Routes = [
   { path: 'a', loadChildren: () => import('./modulea/modulea.module').then(m => m.ModuleaModule) },
   { path: 'b', loadChildren: () => import('./moduleb/moduleb.module').then(m => m.ModulebModule) },
   { path: 'DoughnutstackblitzComponent', component: DoughnutstackblitzComponent, data: {title: 'DoughnutstackblitzComponent'}},
-  // { path: 'DoughnutcanvasComponent', component: DoughnutcanvasComponent, data: {title: 'DoughnutcanvasComponent'}},
+  { path: 'DonutchartnewComponent', component: DonutchartnewComponent, data: {title: 'DonutchartnewComponent'}},
 ];
 @NgModule({
   declarations: [
@@ -152,6 +153,7 @@ const appRoutes: Routes = [
       SearchshopPopupComponent,
      
       DoughnutstackblitzComponent,
+             DonutchartnewComponent,
       
       
 
@@ -197,7 +199,9 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     NgxChartsModule,
     DataTablesModule,
-    ChartModule
+    ChartModule,
+    // NgChartsModule
+    // NgxDonutChartModule
   ],
   providers: [
     EventEmitterService,
