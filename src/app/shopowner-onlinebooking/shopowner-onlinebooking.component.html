@@ -10,7 +10,7 @@
 <div >
 
   <form [formGroup]="onlinebooking" class="form-container" >
-      <mat-card style="border: 1px solid #aeaeae;">
+      <mat-card style="border: 1px solid #aeaeae;background-color: #f3f3f3;">
 
         <!-- <mat-card-header>
           <mat-card-title>
@@ -29,7 +29,7 @@
               <td style="width: 190px">
                 <!-- <div > -->
                 <label>Customer <span class="requiredfield">  *</span></label> <br>
-                <select   class="carmodelcls" formControlName="Customer_id"  style="border: 1px solid;height: 34px;width: 180px;" (change)="loadcarDetailsById($event)" id="customerid2">
+                <select   class="carmodelcls" formControlName="Customer_id"  style="border: 1px solid;height: 34px;width: 180px;background: white;" (change)="loadcarDetailsById($event)" id="customerid2">
 
                   <option value="">--Select--</option>
                   <option *ngFor="let c1 of custDetBycity1" [value]="c1.customer_id">
@@ -54,7 +54,7 @@
               <td style="width: 129px">
                 <div >
                 <label>Model <span class="requiredfield">  *</span></label> <br>
-                <select   class="carmodelcls" formControlName="model_id"  style="border: 1px solid;height: 34px;width: 119px;" (change)="getRegistrationNumberByModel($event)">
+                <select   class="carmodelcls" formControlName="model_id"  style="border: 1px solid;height: 34px;width: 119px;background: white;" (change)="getRegistrationNumberByModel($event)">
 
                   <option value="">--Select--</option>
                   <option *ngFor="let c1 of carDetailsById1" [value]="c1.model">
@@ -80,7 +80,7 @@
 
                 <div >
                 <label>Registration Number <span class="requiredfield">  *</span></label> <br>
-                <select   class="carmodelcls" formControlName="vehicle_number" id="box1"  style="border: 1px solid;height: 34px;width: 119px;"  >
+                <select   class="carmodelcls" formControlName="vehicle_number" id="box1"  style="border: 1px solid;height: 34px;width: 119px;background: white;"  >
 
                   <!-- <option value="">--Select--</option>   -->
                   <option *ngFor="let c2 of carDetailsById3" [value]="c2.vehicle_number">
@@ -106,7 +106,7 @@
               <td style="width: 120px">
                 <div >
                 <label>Booking Date <span class="requiredfield">  *</span></label> <br>
-                <input class="datecls" type="date" min="{{current_date}}" style="border: 1px solid;height: 34px;width: 110px;" matinput="" formControlName="bookingdate" placeholder="Date From" id="booking_date" >
+                <input class="datecls" type="date" min="{{current_date}}" style="border: 1px solid;height: 34px;width: 110px;background: white;" matinput="" formControlName="bookingdate" placeholder="Date From" id="booking_date" >
               </div>
               </td>
 
@@ -229,7 +229,7 @@
                 <label >Drop time</label>
     <br>
 
-                      <select formControlName="drop_time" style="height: 34px;"  class="fromdata" >
+                      <select formControlName="drop_time" style="height: 34px;background: white;"  class="fromdata" >
                         <option value="">--Select---</option>
                         <!-- <option value="12:00 am">12:00 am</option> -->
       <!-- <option value="1:00 am">1:00 am</option>
@@ -266,7 +266,7 @@
           <table>
 <tr>
   <td  style="width: 330px;">
-    <div id="pickupupDropInstructionId" *ngIf="getPickupAvlData2 == 1" style="">
+    <div id="pickupupDropInstructionId" *ngIf="getPickupAvlData2 == 1" >
     <label >Pickup & Drop Instructions <span class="requiredfield">  *</span></label>
     <!-- <p style="margin-top: 10px;"></p> -->
     <!-- <br> -->
