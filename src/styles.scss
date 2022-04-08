@@ -50,6 +50,17 @@ body {
   display:none;
 }
 
+.apexcharts-bar-area{
+  fill:#3b49d0 !important;
+}
+
+line {
+  stroke: #aeaeae;
+  stroke-dasharray: 5 !important;
+  stroke-width: 1px !important;
+  stroke-linecap: butt;
+}
+
 .ng-select .ng-select-container {
 
   width: 93% !important;

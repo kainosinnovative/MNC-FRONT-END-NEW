@@ -36,17 +36,7 @@ export type ChartOptions = {
   tooltip:ApexChart | any;
 };
 
-export type ChartOptions2 = {
-  series: ApexNonAxisChartSeries | any;
-  chart: ApexChart | any;
-  responsive: ApexResponsive[] | any;
-  labels: any;
-  fill: ApexFill | any;
-  legend: ApexLegend | any;
-  dataLabels: ApexDataLabels | any;
-  
 
-};
 export type ChartOptions3 = {
   series: ApexNonAxisChartSeries | any;
   chart: ApexChart | any;
@@ -63,6 +53,8 @@ export type ChartOptions3 = {
   styleUrls: ['./shopdashboard.component.scss']
 })
 export class ShopdashboardComponent implements OnInit {
+  donutChart: any;
+  columnChart: any;
   opened = true;
   opened1 = false;
   opened2 = false;
@@ -109,14 +101,14 @@ export class ShopdashboardComponent implements OnInit {
  combocustomerArr:any = [];
  combocustomerArr1:any=[];
  combocustomerArr2:any=[];
-
+ lastservice:any = [];
+ lastservice2:any = [];
 
 
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-  @ViewChild("chart2") chart2: ChartComponent;
-  public chartOptions2: Partial<ChartOptions2>;
+  
   @ViewChild("chart3") chart3: ChartComponent;
   public chartOptions3: Partial<ChartOptions>;
   constructor(public restApi: RestApiService,private http: HttpClient,private frmbuilder: FormBuilder,
@@ -276,7 +268,7 @@ export class ShopdashboardComponent implements OnInit {
 
     };
     this.loadServiceDataOffers();
-
+    this.initColumn();
 
 
 
@@ -522,9 +514,9 @@ combocustomerinfo()
     this.combocustomer = data;
     console.log("seetha>>",this.combocustomer);
      this.combocustomer1 = this.combocustomer;
+      //this.combocustomer1 = "";  // empty data
 
-
-     console.log("arrayold>>>",this.combocustomerArr);
+     console.log("arrayold>>>",this.combocustomer1);
 
     // this.ComboOfferAmountArr = [10,100];
      for(let i=0;i<this.combocustomer1.length;i++){
@@ -635,7 +627,7 @@ currentComboOffers(){
   this.restApi.getcurrentComboOffersByShopid(currentUserId).subscribe((data: {}) => {
     this.currentOffer = data;
      this.currentOffer1 = this.currentOffer;
-
+      //  this.currentOffer1 = '';  // empty data
      console.log("array1111>>>",this.currentOffer1);
     // this.ComboOfferAmountArr = [10,100];
      for(let i=0;i<this.currentOffer1.length;i++){
@@ -643,7 +635,7 @@ currentComboOffers(){
       // this.ComboOfferFromDateTodate.push(this.currentOffer1[i].start_date + " - " + this.currentOffer1[i].end_date);
       this.ComboOfferFromDateTodate.push(this.currentOffer1[i].offer_name+"("+this.currentOffer1[i].model_name+")");
      }
-    //  console.log("array>>>",this.ComboOfferFromDateTodate);
+     console.log("combo apr8>>>",this.ComboOfferFromDateTodate);
 
      this.chartOptions = {
 
@@ -665,7 +657,9 @@ currentComboOffers(){
 
           },
         },
-
+        fill: {
+          colors: ['red']
+        },
         type: "bar",
         height: 300,
         width:400,
@@ -697,6 +691,7 @@ currentComboOffers(){
 
 
       },
+      
       yaxis: {
 
         scaleLabel: {
@@ -728,85 +723,148 @@ currentComboOffers(){
 
 }
 
-// currentComboOffers(){
-//   let currentUserId = localStorage.getItem('currentUserId');
-//   return this.restApi.getcurrentComboOffersByShopid(currentUserId).subscribe((data: {}) => {
-//     // alert(data)
-//     this.currentOffer = data;
-//      this.currentOffer1 = this.currentOffer.data.getcurrentComboOffersByShopid;
-
-//      console.log("currentComboOffers>>>>",this.currentOffer1)
-
-//   })
-// }
-
 
 loadServiceDataOffers(){
+
   let currentUserId = localStorage.getItem('currentUserId');
   return this.restApi.getServiceDataOffers(currentUserId).subscribe((data: {}) => {
     // alert(data)
     this.serviceDataOffers = data;
-    this.serviceDataOffers1 = this.serviceDataOffers.data.getcurrentOffersByShopid;
+    this.serviceDataOffers1 = this.serviceDataOffers;
+    // this.myJSON = JSON.stringify(this.serviceDataOffers1);
+  //  console.log(this.myJSON)
+  
 
-    console.log("serviceDataOffers1>>>",this.serviceDataOffers1)
-    // this.dtTrigger.next();
+    // for(let i=0;i<this.serviceDataOffers1.length;i++){
+    //   this.NormalOfferPercentArr.push(Number(this.serviceDataOffers1[i].offer_percent));
+    //  this.servicenameArr.push((this.serviceDataOffers1[i].service_name + "<br>"+ "(" + this.serviceDataOffers1[i].model_name) + ")");
+    // }
 
-    for(let i=0;i<this.serviceDataOffers1.length;i++){
-      this.NormalOfferPercentArr.push(Number(this.serviceDataOffers1[i].offer_percent));
-     // this.ComboOfferFromDateTodate.push(this.currentOffer1[i].start_date + " - " + this.currentOffer1[i].end_date);
-     this.servicenameArr.push((this.serviceDataOffers1[i].service_name + "<br>"+ "(" + this.serviceDataOffers1[i].model_name) + ")");
-    }
-    console.log("array>>>",this.servicenameArr);
+//this.serviceDataOffers1=""; // empty data
+    this.initDonut(this.serviceDataOffers1);
+    
 
-    this.chartOptions2 = {
-      series: this.NormalOfferPercentArr,
-      chart: {
-        height:500,
-        width: 500,
-        type: "donut",
-        options: {
-          
-          "legend": {
-            "position": "bottom",
-            "valign": "top"
-          }
-          
-
-        }
-      },
-     
-      dataLabels: {
-        enabled: false,
-      },
-      fill: {
-        type: "gradient",
-      },
-      labels: this.servicenameArr,
-
-      
-      
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 350
-            },
-            legend: {
-              position: "top"
-            },
-            dataLabels: {
-              enabled: false
-            },
-
-          }
-        }
-      ]
-    };
   })
 
 
 }
+
+
+initColumn() {
+  // const column = new Chart({
+  //   chart: {
+  //     type: 'column'
+  //   },
+  //   title: {
+  //     text: 'Unique User'
+  //   },
+  //   credits: {
+  //     enabled: false
+  //   },
+
+    
+  // });
+  // column.addPoint(12);
+  // this.columnChart = column;
+  // column.ref$.subscribe(console.log);
+}
+initDonut(serviceDataOffers1:any) {
+  
+  this.lastservice = new Array();
+  var json1;
+  console.log("serviceDataOffers1>>>",serviceDataOffers1)
+  for(let i=0;i<serviceDataOffers1.length;i++){
+     json1 =
+    {
+      // + "<br>"+ "(" + serviceDataOffers1[i].model_name
+   name:  ((this.serviceDataOffers1[i].service_name + "<br>"+ "(" + this.serviceDataOffers1[i].model_name) + ")"),
+  //  serviceDataOffers1[i].name,
+   y: Number(serviceDataOffers1[i].offer_percent)
+    }
+    // alert(json1)
+     
+     this.lastservice.push(json1);
+     console.log("json1>>>",json1)
+      }
+ 
+
+
+// var staticjson =  [{
+//     name: 'Chrome',
+//     y: 10
+//   },
+//   {
+//     name: 'Internet Explorer',
+//     y: 11.84,
+//   }, {
+//     name: 'Firefox',
+//     y: 10.85,
+//   }, {
+//     name: 'Edge',
+//     y: 4.67
+//   }, {
+//     name: 'Safari',
+//     y: 4.18
+//   }];
+
+  // console.log("json3>>>",json3)
+    
+  var finaljson = (this.lastservice);
+    
+    // let finaljson2 = finaljson1.slice(1, -1);
+    console.log("this.lastservice2>>>",this.lastservice2)
+  const donut = new Chart({
+    chart: {
+      // plotBackgroundColor: null,
+      plotBorderWidth: 0,
+      plotShadow: false
+    },
+    title: {
+      text: '',
+      // text: '<strong>Service<br>Offers</strong>',
+      align: 'center',
+      verticalAlign: 'middle',
+      y: 0
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.y}%</b>'
+    },
+    credits: {
+      enabled: false
+    },
+    plotOptions: {
+      pie: {
+        // allowPointSelect: false,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: false,
+          // distance: -50,
+          style: {
+            fontWeight: 'bold',
+            color: 'white'
+          }
+        },
+        // startAngle: -90,
+        // endAngle: -180,
+        center: ['50%', '50%'],
+        size: '100%',
+        showInLegend: true
+      }
+    },
+    series: [
+      {
+        name: 'Service',
+        data:  finaljson,
+       
+        type: 'pie',
+        innerSize: '50%',
+      }]
+  });
+  this.donutChart = donut;
+
+}
+
+
 
 viewBookingDetails(id :any)
 {

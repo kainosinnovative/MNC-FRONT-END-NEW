@@ -40,31 +40,12 @@ export class DoughnutstackblitzComponent implements OnInit {
       this.myJSON = JSON.stringify(this.serviceDataOffers1);
      console.log(this.myJSON)
     
-      
-    //   if (this.myJSON.length) {
-
-    //     var heighest:any = [];
-    //     for (var i = 0; i < this.serviceDataOffers1.length; i++) {
-    //         var offer_percent = Number(this.serviceDataOffers1[i].y);
-    //         console.log("offer_percent>>>",offer_percent);
-    //         heighest[i] = offer_percent;
-    //         // if (likes > heighest.likes) {
-    //         //     heighest = this.myJSON[i];
-    //         // }
-    //     }
-    //     console.log("highest>>>",heighest);
-    
-    //      // logs object with id 34567
-    // } else {
-    //     console.log("No items in array");
-    // }
   
       for(let i=0;i<this.serviceDataOffers1.length;i++){
         this.NormalOfferPercentArr.push(Number(this.serviceDataOffers1[i].offer_percent));
        this.servicenameArr.push((this.serviceDataOffers1[i].service_name + "<br>"+ "(" + this.serviceDataOffers1[i].model_name) + ")");
       }
 
-      // this.myJSON = JSON.stringify(this.NormalOfferPercentArr);
 
       this.initDonut(this.serviceDataOffers1);
       
