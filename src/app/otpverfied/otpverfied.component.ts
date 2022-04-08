@@ -18,6 +18,8 @@ export class OtpverfiedComponent implements OnInit {
   showMyContainer: boolean = false;
   showTimerContainer:boolean=true;
   isloggedinUser = localStorage.getItem('isloggedinUser');
+
+  shopname = localStorage.getItem('name');
   public  dataForm1: FormGroup;
   dialog: any;
   // dialogRef: any;
@@ -74,7 +76,7 @@ loadCustomerDetails2(Objval:any) {
       this.customerdata1 = this.customerdata.data;
       this.customerdata2 = this.customerdata1.SingleCustomerDetails;
 
-      console.log("data>>",data)
+      console.log("abi>>",this.customerdata2)
 
       if(loginfor == 'shopowner') {
 
@@ -83,6 +85,8 @@ loadCustomerDetails2(Objval:any) {
       localStorage.setItem('userroleSes', 'shopOwnerSes');
       localStorage.setItem('currentLogincity', this.customerdata2[0].city);
       localStorage.setItem('shoplogo', this.customerdata2[0].shop_logo);
+      localStorage.setItem('shopname', this.customerdata2[0].name);
+      // localStorage.setItem('name', currentshopname);
       }
       else {
         localStorage.setItem('currentUsername', this.customerdata2[0].firstname);
@@ -343,6 +347,10 @@ sendotp2(dataForm1: any) {
 
 
 
+
+function currentshopname(arg0: string, currentshopname: any) {
+  throw new Error('Function not implemented.');
+}
 // function loadCustomerDetails() {
 //   throw new Error('Function not implemented.');
 // }

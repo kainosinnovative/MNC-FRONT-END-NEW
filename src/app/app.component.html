@@ -7,15 +7,16 @@
 
     <!-- customer mobile start -->
     <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove" mat-list-item >Hi, {{currentUsername}}</a> </mat-list-item>
-    <mat-list-item class="menudesk1 "  *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a (click)="selectcity()" class="txtunderline_remove2" mat-list-item routerLink='/first'><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; Select a City
+   
+    <mat-list-item class="menudesk1 "   *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a (click)="selectcity()" class="txtunderline_remove2" mat-list-item routerLink='/first' ><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; Select a City
     </a> </mat-list-item>
-    <mat-list-item   class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/home'>Home
+    <mat-list-item   class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" style="cursor: pointer" mat-list-item routerLink='/home' [routerLinkActive]="['is-active']">Home
     </a> </mat-list-item>
     <!-- <mat-list-item class="menudesk1" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="txtunderline_remove2" mat-list-item routerLink='/onlinebooking'>Online Booking
     </a> </mat-list-item> -->
 
-   <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/customercreate'>My Profile</a> </mat-list-item>
-   <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" routerLink="/MyBooking" mat-list-item >My Booking</a> </mat-list-item>
+   <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/customercreate' [routerLinkActive]="['is-active']">My Profile</a> </mat-list-item>
+   <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" routerLink="/MyBooking" [routerLinkActive]="['is-active']"  mat-list-item >My Booking</a> </mat-list-item>
 
    <mat-list-item *ngIf="userroleSes=='CustomerSes'"> <a class="txtunderline_remove" (click)="searchshopMobile()" mat-list-item ><i class="fa fa-search" aria-hidden="true"></i>&nbsp; Search</a> </mat-list-item>
 
@@ -28,17 +29,18 @@
 
       <!-- for shop owner -->
 
-      <mat-list-item class="menudesk1" *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove2" mat-list-item routerLink='/ShopDashboard'>Home
+      <mat-list-item class="menudesk1" *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove2" mat-list-item routerLink='/ShopDashboard' [routerLinkActive]="['is-active']">Home
       </a> </mat-list-item>
 
-  <mat-list-item *ngIf="userroleSes=='shopOwnerSes'" > <a class="txtunderline_remove"  mat-list-item routerLink='/ShopService'>Services</a> </mat-list-item>
-  <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/ComboOffers'>Combo Offers</a> </mat-list-item>
+  <mat-list-item *ngIf="userroleSes=='shopOwnerSes'" > <a class="txtunderline_remove"  mat-list-item routerLink='/ShopService' [routerLinkActive]="['is-active']">Services</a> </mat-list-item>
+  <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/ComboOffers' [routerLinkActive]="['is-active']">Combo Offers</a> </mat-list-item>
 
-  <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/ShopProfile'>My Profile</a> </mat-list-item>
+  <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/ShopProfile' [routerLinkActive]="['is-active']">My Profile</a> </mat-list-item>
 
 
 
-  <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/contactus'>Contact Us</a> </mat-list-item>
+  <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" mat-list-item routerLink='/contactus' [routerLinkActive]="['is-active']">Contact Us</a> </mat-list-item>
+  
 
   <!-- for shop owner -->
 
@@ -47,10 +49,10 @@
 
 
 
-      <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove lock"  mat-list-item routerLink='/home'  (click)="logout()"><i class="fa fa-power-off" aria-hidden="true"></i></a> </mat-list-item>
+      <mat-list-item *ngIf="currentUsername"> <a class="txtunderline_remove lock"  mat-list-item routerLink='/home' [routerLinkActive]="['is-active']"  (click)="logout()"><i class="fa fa-power-off" aria-hidden="true"></i></a> </mat-list-item>
 
       <!-- both customer and shop owner -->
-
+      <!-- <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="" mat-list-item >{{currentshopname}}</a></mat-list-item> -->
 
 
   </mat-list>
@@ -62,13 +64,13 @@
 
 
   <mat-list-item  *ngIf="userroleSes=='CustomerSes'" > <img src="{{apiurlforhtm}}/images/Kainos_logo.png" style="width: 60px;"> </mat-list-item>
-  <mat-list-item  *ngIf="userroleSes=='shopOwnerSes'"> <img src="{{apiurlforhtm}}/{{shoplogo}}" style="width: 60px;"> </mat-list-item>
+  <!-- <mat-list-item  *ngIf="userroleSes=='shopOwnerSes'"> <img src="{{apiurlforhtm}}/{{shoplogo}}" style="width: 60px;"> </mat-list-item> -->
   <label style="width: 55px;"></label>
   <mat-list-item class="menudesk" *ngIf="currentUsername" > <a  class="colorheaderMenu" >Hi, {{currentUsername}}</a> </mat-list-item> &nbsp; &nbsp;
-  <mat-list-item class="menudesk" *ngIf="userroleSes=='shopOwnerSes'"> <a class="colorheaderMenu" mat-list-item routerLink='/ShopDashboard'>Home</a> </mat-list-item> <span *ngIf="userroleSes=='shopOwnerSes'">&nbsp; &nbsp;</span>
+  <mat-list-item class="menudesk" *ngIf="userroleSes=='shopOwnerSes'"> <a class="colorheaderMenu" mat-list-item routerLink='/ShopDashboard' [routerLinkActive]="['is-active']">Home</a> </mat-list-item> <span *ngIf="userroleSes=='shopOwnerSes'">&nbsp; &nbsp;</span>
 
 
-  <mat-list-item class="menudesk" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="colorheaderMenu" mat-list-item routerLink='/home'>Home</a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes' || !userroleSes">&nbsp; &nbsp;</span>
+  <mat-list-item class="menudesk" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="colorheaderMenu" mat-list-item routerLink='/home' [routerLinkActive]="['is-active']">Home</a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes' || !userroleSes">&nbsp; &nbsp;</span>
 
 
 <!-- for cust general user -->
@@ -89,35 +91,41 @@
 <!-- for customer -->
   <!-- <mat-list-item  class="menudesk cursorcls" *ngIf="userroleSes=='CustomerSes' || !userroleSes"> <a class="colorheaderMenu" mat-list-item routerLink='/onlinebooking'>Online Booking </a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes' || !userroleSes">&nbsp; &nbsp;</span> -->
 
-  <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink='/customercreate'>My Profile </a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes'">&nbsp; &nbsp;</span>
+  <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink='/customercreate' [routerLinkActive]="['is-active']">My Profile </a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes'">&nbsp; &nbsp;</span>
 
-  <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink="/MyBooking">My Booking </a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes'">&nbsp; &nbsp;</span>
+  <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink="/MyBooking" [routerLinkActive]="['is-active']">My Booking </a> </mat-list-item> <span *ngIf="userroleSes=='CustomerSes'">&nbsp; &nbsp;</span>
 
-  <mat-list-item class="menudesk cursorcls" *ngIf="!userroleSes" > <a  class="colorheaderMenu" (click)="login();loginCheck1()">Login</a> </mat-list-item>
+  <mat-list-item class="menudesk cursorcls" *ngIf="!userroleSes" > <a  class="colorheaderMenu" (click)="login();loginCheck1()" >Login</a> </mat-list-item>
 
 <!-- for customer -->
 
 
 <!-- for shop owner -->
-<mat-list-item  class="menudesk cursorcls" *ngIf="userroleSes=='shopOwnerSes'"> <a class="colorheaderMenu" mat-list-item routerLink='/ShopService'>Services </a> </mat-list-item> &nbsp; &nbsp;
+<mat-list-item  class="menudesk cursorcls" *ngIf="userroleSes=='shopOwnerSes'"> <a class="colorheaderMenu" mat-list-item routerLink='/ShopService' [routerLinkActive]="['is-active']">Services </a> </mat-list-item> &nbsp; &nbsp;
 
-<mat-list-item  class="menudesk cursorcls" *ngIf="userroleSes=='shopOwnerSes'"> <a class="colorheaderMenu" mat-list-item routerLink='/ComboOffers'>Combo Offers </a> </mat-list-item> &nbsp; &nbsp;
+<mat-list-item  class="menudesk cursorcls" *ngIf="userroleSes=='shopOwnerSes'"> <a class="colorheaderMenu" mat-list-item routerLink='/ComboOffers'  [routerLinkActive]="['is-active']">Combo Offers </a> </mat-list-item> &nbsp; &nbsp;
 
 
-<mat-list-item *ngIf="userroleSes=='shopOwnerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink='/ShopProfile'>My Profile </a> </mat-list-item> <span *ngIf="userroleSes=='shopOwnerSes'">&nbsp; &nbsp;</span>
+<mat-list-item *ngIf="userroleSes=='shopOwnerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink='/ShopProfile' [routerLinkActive]="['is-active']">My Profile </a> </mat-list-item> <span *ngIf="userroleSes=='shopOwnerSes'">&nbsp; &nbsp;</span>
 
-<mat-list-item *ngIf="userroleSes=='shopOwnerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item  (click)="bookingRedirect()">Booking </a> </mat-list-item> <span *ngIf="userroleSes=='shopOwnerSes'">&nbsp; &nbsp;&nbsp; </span>
+<mat-list-item *ngIf="userroleSes=='shopOwnerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item  (click)="bookingRedirect()" routerLink='/shopownerOnlineBooking' [routerLinkActive]="['is-active']">Booking </a> </mat-list-item> <span *ngIf="userroleSes=='shopOwnerSes'">&nbsp; &nbsp;&nbsp; </span>
 
-<mat-list-item *ngIf="userroleSes=='shopOwnerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink='/contactus'>Contact Us </a> </mat-list-item> <span *ngIf="userroleSes=='shopOwnerSes'">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
+<mat-list-item *ngIf="userroleSes=='shopOwnerSes'" class="menudesk cursorcls"> <a class="colorheaderMenu" mat-list-item routerLink='/contactus' [routerLinkActive]="['is-active']">Contact Us </a> </mat-list-item> <span *ngIf="userroleSes=='shopOwnerSes'">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
 
 <!-- for shop owner -->
 
   <!-- both customer and shop owner -->
 
-  <mat-list-item class="menudesk cursorcls" style="margin-left: -32px;" *ngIf="currentUsername" > <a routerLink='/home' class="colorheaderMenu" title="Logout" (click)="logout()"><i class="fa fa-power-off" aria-hidden="true"></i></a> </mat-list-item>
+  <mat-list-item class="menudesk cursorcls" style="margin-left: -32px;" *ngIf="currentUsername" > <a routerLink='/home' [routerLinkActive]="['is-active']" class="colorheaderMenu" title="Logout" (click)="logout()"><i class="fa fa-power-off" aria-hidden="true"></i></a> </mat-list-item>
   <!-- both customer and shop owner -->
+ 
 
-  <mat-list-item *ngIf="userroleSes=='CustomerSes'" class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' mat-list-item >
+  <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" style="font-size: 16px !important;font-style: italic;color: #e81c2e;font-weight: bold;margin-left: 572px;text-transform: uppercase !important;">{{currentshopname}}</a> </mat-list-item>&nbsp; &nbsp;
+
+  <mat-list-item  *ngIf="userroleSes=='shopOwnerSes'"> <img src="{{apiurlforhtm}}/{{shoplogo}}" class="rounded-circle" style="height: 52px; width: 65px;"> </mat-list-item>
+
+
+  <mat-list-item *ngIf="userroleSes=='CustomerSes'"  class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' [routerLinkActive]="['is-active']" mat-list-item >
     <i class="fa fa-search" aria-hidden="true"></i>&nbsp; </a>
     
     <!-- <input class="search" type="text" placeholder="Search" > -->

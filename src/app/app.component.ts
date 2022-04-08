@@ -57,6 +57,9 @@ export class AppComponent implements OnInit{
 
   currentUsername = localStorage.getItem('currentUsername');
 
+  currentshopname = localStorage.getItem('shopname');
+ 
+
   userroleSes = localStorage.getItem('userroleSes');
 
 
@@ -66,6 +69,7 @@ shoplogo:any;
   cont_id: any;
   cityid: any;
   cityname:any;
+  // currentshopname: any;
   // topScroll: any;
   date1:any;
   currenttime:any;
@@ -94,6 +98,9 @@ constructor(private service: Service,private  dialog:  MatDialog, private  route
 
 
   ngOnInit(): void {
+    
+
+    console.log(this.currentshopname);
 
     this.getholidaysForAll();
     this.date1=new Date();
@@ -105,6 +112,7 @@ constructor(private service: Service,private  dialog:  MatDialog, private  route
     //  var cityid:any;
     this.cityid = localStorage.getItem('selectedCity');
     this.cityname=localStorage.getItem('selectedCityname');
+    // this.currentshopname=localStorage.getItem('shopname');
 
  
 
