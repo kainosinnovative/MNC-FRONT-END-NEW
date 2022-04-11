@@ -13,8 +13,8 @@
           <th style="width:8%;text-align: center;" class="fontwghtcls">Date</th>
           <th style="width:18%;text-align: center;" class="fontwghtcls">Customer Name</th>
            <th style="width:10%;text-align: center;" class="fontwghtcls">Total (<span><i class="fa fa-rupee"></i></span>) </th>
-           <th style="width:5%;padding-left: 9px !important;" class="fontwghtcls">Confirm</th>
-          <th style="width:5%;padding-left: 9px !important;" class="fontwghtcls">Reject</th>
+           <th style="width:5%;text-align: center;" class="fontwghtcls">Confirm</th>
+          <th style="width:5%;text-align: center;" class="fontwghtcls">Reject</th>
 
 
         </tr>
@@ -24,13 +24,13 @@
         <tr *ngFor="let b of  posts | paginate: config ;  let i=index;" style="border-bottom:1px solid #aeaeae;text-align: left;">
 
           <td style="display:none;width: 0px;">{{b.id}}</td>
-          <td class="fontwghtcls"><a style="cursor: pointer;color: #26a0fc;text-decoration: underline;margin-left: 47px;"  (click)="ViewDetailsPopup(b.Booking_id,'Upcoming Booking')" >{{b.Booking_id}}</a></td>
-          <td ><p style="margin-left: 64px;">{{b.vehicle_number}}</p></td>
+          <td class="fontwghtcls"><a style="cursor: pointer;color: #26a0fc;text-decoration: underline;margin-left: 51px;"  (click)="ViewDetailsPopup(b.Booking_id,'Upcoming Booking')" >{{b.Booking_id}}</a></td>
+          <td ><p style="margin-left: 75px;">{{b.vehicle_number}}</p></td>
           <td>
-            <p style="margin-left: 62px;">{{b.bookingdate | date: 'dd-MM-yyyy'}}</p>
+            <p style="margin-left: 69px;">{{b.bookingdate | date: 'dd-MM-yyyy'}}</p>
             <!-- <input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"> -->
           </td>
-          <td><p style="margin-left: 139px;">{{b.firstname}}</p></td>
+          <td><p style="margin-left: 145px;">{{b.firstname}}</p></td>
           <!-- <td>     {{b.combo_id}}           </td>  -->
           <!-- <td>{{b.comboprice_total}}</td> -->
           <!-- <td>
@@ -46,7 +46,7 @@
             </td>  -->
           <!-- <td>{{b.serviceprice_total}}</td> -->
           <td >
-            <p style="text-align: right;margin-right: 78px;">{{b.payable_amt}}</p>
+            <p style="text-align: right;margin-right: 84px;">{{b.payable_amt}}</p>
 
           </td>
           <!-- <td>
@@ -57,10 +57,10 @@
               </ng-template>
             </td> -->
 
-          <td>
-            <a (click)="acceptrejectbooking('Accepted',b.Booking_id,b.pickup_drop)" ><i style="color: #01992d;font-size: 20px;cursor: pointer;" class="fa fa-check-circle"></i></a> </td>
-            <td>
-            <a (click)="acceptrejectbooking('Rejected',b.Booking_id,b.pickup_drop)" ><i style="color: #bf3900;font-size: 20px;cursor: pointer;" class="fa fa-times-circle"></i></a>
+          <td style="text-align: center;">
+            <a  (click)="acceptrejectbooking('Accepted',b.Booking_id,b.pickup_drop)" ><i style="color: #01992d;font-size: 20px;cursor: pointer;" class="fa fa-check-circle"></i></a> </td>
+            <td style="text-align: center;">
+            <a  (click)="acceptrejectbooking('Rejected',b.Booking_id,b.pickup_drop)" ><i style="color: #bf3900;font-size: 20px;cursor: pointer;" class="fa fa-times-circle"></i></a>
           </td>
         </tr>
 

@@ -168,7 +168,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
 
-
+{onSameUrlNavigation: 'reload',}
      // { useHash: true }
 
     ),
@@ -200,6 +200,7 @@ const appRoutes: Routes = [
     NgxChartsModule,
     DataTablesModule,
     ChartModule,
+    
     // NgChartsModule
     // NgxDonutChartModule
   ],
