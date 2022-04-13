@@ -214,16 +214,35 @@ export class ShopdashboardComponent implements OnInit {
 
     };
     this.dtOptions1 = {
+      
       pagingType: 'full_numbers',
       pageLength: 5,
       processing: true,
       dom: 'Bfrtip',
+      // searching: {
+      //   aoColumns: [ 1,2,3,4,5,6]
+      // },
+      columnDefs: [
+        {
+            "targets": [ 7 ],
+            "visible": true,
+            "searchable": false
+        },
+      
+    ],
+      // columns: [
+      //   { "searchable": false},
+      //   1,2,3,4,5,6
+      // ],
+
       buttons: {
-        dom: {
+      
+       dom: {
           button: {
             tag: 'i',
             className: ''
           }
+         
         },
         //since we now have completely unstyled icons add
         //some space between them trough a .custom-btn class

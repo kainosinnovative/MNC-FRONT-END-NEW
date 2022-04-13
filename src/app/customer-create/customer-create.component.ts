@@ -456,7 +456,21 @@ AddCustomerCarDetails(cardetailForm:any)
         console.log("err>>>>>",err);
         if(err.status == 200) {
           this.toastr.success('Car Details added Successfully');
-          window.setTimeout(function(){location.reload()},100);
+          // location.reload(true);
+          // window.setTimeout(function(){location.reload()},100);
+    //       let currentUrl = this.router.url;
+    // this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+    //     this.router.navigate([currentUrl]);
+    // });
+  //   let currentUrl = this.router.url;
+  //   this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+  //     this.router.navigate([currentUrl]);
+  // }); 
+  let currentUrl = this.router.url;
+  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate([currentUrl]);
+  
           this.loadcarDetailsById();
           this.cardetailForm.reset();
           let currentUserId:any = localStorage.getItem('currentUserId');

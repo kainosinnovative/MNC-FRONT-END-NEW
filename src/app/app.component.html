@@ -2,7 +2,7 @@
 <mat-sidenav-container fullscreen id="cont_id">
   <!-- <h5><u><i>Footer creation using angular material !!</i></u></h5> -->
   <mat-sidenav #sidenav class="sidenavstyle" >
-  <mat-list >
+  <mat-list class="menuitemcss" >
 
 
     <!-- customer mobile start -->
@@ -120,13 +120,13 @@
   <!-- both customer and shop owner -->
  
 
-  <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" style="font-size: 16px !important;font-style: italic;color: #e81c2e;font-weight: bold;margin-left: 572px;text-transform: uppercase !important;">{{currentshopname}}</a> </mat-list-item>&nbsp; &nbsp;
+  <mat-list-item *ngIf="userroleSes=='shopOwnerSes'"> <a class="txtunderline_remove" style="font-size: 16px !important;font-style: italic;color: #2700ff;font-weight: bolder;margin-left: 572px;text-transform: uppercase !important;">{{currentshopname}}</a> </mat-list-item>&nbsp;
 
   <mat-list-item  *ngIf="userroleSes=='shopOwnerSes'"> <img src="{{apiurlforhtm}}/{{shoplogo}}" class="rounded-circle" style="height: 52px; width: 65px;"> </mat-list-item>
 
 
-  <mat-list-item *ngIf="userroleSes=='CustomerSes'"  class="menudesk cursorcls" style="margin-left:400px;"> <a class="colorheaderMenu"   routerLink='/search' [routerLinkActive]="['is-active']" mat-list-item >
-    <i class="fa fa-search" aria-hidden="true"></i>&nbsp; </a>
+  <mat-list-item *ngIf="userroleSes=='CustomerSes'"  class="menudesk cursorcls" style="margin-left: 506px;"> <a class="colorheaderMenu"   routerLink='/search' [routerLinkActive]="['is-active']" mat-list-item >
+    <i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;</a>
     
     <!-- <input class="search" type="text" placeholder="Search" > -->
 
@@ -160,7 +160,7 @@
     <router-outlet (activate)="onActivate($event)"></router-outlet>
 
      
-
+<div style="height: 60px;"></div>
 
 <div class="footer" style="height: 340px;background-color: #202c45 !important;" #footer id="footerdisplay">
   <footer class=" page-footer font-small blue pt-4">
