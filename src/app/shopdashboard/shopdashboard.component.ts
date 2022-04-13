@@ -62,6 +62,7 @@ export class ShopdashboardComponent implements OnInit {
   // barChart = new Chart(barChart);
 
   //dtOptions: DataTables.Settings = {};
+  
   dtOptions: any = {};
   posts: any;
   dtOptions1: any = {};
@@ -108,7 +109,7 @@ export class ShopdashboardComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-  
+
   @ViewChild("chart3") chart3: ChartComponent;
   public chartOptions3: Partial<ChartOptions>;
   constructor(public restApi: RestApiService,private http: HttpClient,private frmbuilder: FormBuilder,
@@ -567,14 +568,14 @@ combocustomerinfo()
           },
         },
 
-        
+
 
         type: "bar",
         height: 300,
         width:400,
         colors:  ['#546E7A', '#E91E63'],
-        
-        
+
+
 
       },
 
@@ -710,7 +711,7 @@ currentComboOffers(){
 
 
       },
-      
+
       yaxis: {
 
         scaleLabel: {
@@ -752,7 +753,7 @@ loadServiceDataOffers(){
     this.serviceDataOffers1 = this.serviceDataOffers;
     // this.myJSON = JSON.stringify(this.serviceDataOffers1);
   //  console.log(this.myJSON)
-  
+
 
     // for(let i=0;i<this.serviceDataOffers1.length;i++){
     //   this.NormalOfferPercentArr.push(Number(this.serviceDataOffers1[i].offer_percent));
@@ -761,7 +762,7 @@ loadServiceDataOffers(){
 
 //this.serviceDataOffers1=""; // empty data
     this.initDonut(this.serviceDataOffers1);
-    
+
 
   })
 
@@ -781,14 +782,14 @@ initColumn() {
   //     enabled: false
   //   },
 
-    
+
   // });
   // column.addPoint(12);
   // this.columnChart = column;
   // column.ref$.subscribe(console.log);
 }
 initDonut(serviceDataOffers1:any) {
-  
+
   this.lastservice = new Array();
   var json1;
   console.log("serviceDataOffers1>>>",serviceDataOffers1)
@@ -801,11 +802,11 @@ initDonut(serviceDataOffers1:any) {
    y: Number(serviceDataOffers1[i].offer_percent)
     }
     // alert(json1)
-     
+
      this.lastservice.push(json1);
      console.log("json1>>>",json1)
       }
- 
+
 
 
 // var staticjson =  [{
@@ -827,9 +828,9 @@ initDonut(serviceDataOffers1:any) {
 //   }];
 
   // console.log("json3>>>",json3)
-    
+
   var finaljson = (this.lastservice);
-    
+
     // let finaljson2 = finaljson1.slice(1, -1);
     console.log("this.lastservice2>>>",this.lastservice2)
   const donut = new Chart({
@@ -874,7 +875,7 @@ initDonut(serviceDataOffers1:any) {
       {
         name: 'Service',
         data:  finaljson,
-       
+
         type: 'pie',
         innerSize: '50%',
       }]
